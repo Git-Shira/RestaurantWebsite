@@ -1,0 +1,177 @@
+* {
+    direction: rtl;
+    box-sizing: border-box;
+
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+    background: linear-gradient(to bottom, #DCE3E3 0%, #A6A6A6 50%, #000000 100%);
+}
+
+.main {
+    background-color: black;
+}
+
+.carousel {
+    position: relative;
+    z-index: 0;
+}
+
+.carousel-item {
+    height: 750px;
+    background-size: cover;
+    background-position: top;
+}
+
+.container-fluid {
+    width: 100%;
+    color: aliceblue;
+    background-color: black;
+
+    font-size: x-large;
+}
+
+.selector {
+    animation: my-scrolimg 3s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin: 0 auto;
+    margin-top: -150px;
+
+    position: relative;
+    z-index: 1;
+}
+
+.selector .fa {
+    font-size: 24px;
+}
+
+.div-selector a {
+    text-decoration: none;
+}
+
+@keyframes my-scrolimg {
+    0% {
+        transform: translate(0);
+    }
+
+    50% {
+        transform: translate(0, 40px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.my-container {
+    max-width: 500px;
+
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: xx-large;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.title {
+    position: relative;
+    display: inline-block;
+}
+
+.title:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 70%;
+    height: 3px;
+    background-color: #C1121F;
+    transform: translateX(-50%);
+}
+
+section.big-deal {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    height: 500px;
+}
+
+.first-pic {
+    background:
+        url(../../IMAGES/first-pic.jpg);
+}
+
+.sec-pic {
+    background:
+        url(../../IMAGES/sec-pic.jpg);
+}
+
+.footer-pic {
+    height: 130px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.button-link {
+    text-decoration: none;
+    color: white;
+}
+
+.button-link:hover {
+    color: #C1121F;
+    font-weight: bold;
+}
+
+.button {
+    background-color: black;
+    border: 2px solid white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 2s, color 0.5s;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+}
+
+.my-container-img {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.s1 {
+    height: 200px;
+    animation: my-scrolimg 3s ease infinite;
+}
+
+.s2 {
+    margin-right: 100px;
+    height: 200px;
+    animation: my-scrolimg 1.5s ease infinite;
+}
+
+.s3 {
+    margin-right: 100px;
+    height: 200px;
+    animation: my-scrolimg 3s ease infinite;
+}
