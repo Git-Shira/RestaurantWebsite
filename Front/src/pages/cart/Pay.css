@@ -2,23 +2,11 @@
     color: #C1121F !important;
 }
 
-/* לצבוע את הערך שממלאים בעיר*/
-/* ,.MuiAutocomplete-colorPrimary , */
 .MuiFormLabel-colorPrimary {
     color: #C1121F !important;
 }
 
-.city .MuiInputBase-root
-
-/* , */
-/* .MuiOutlinedInput-root, */
-/* .MuiInputBase-colorPrimary, */
-/* .MuiInputBase-fullWidth, */
-/* .MuiInputBase-formControl, */
-/* .MuiInputBase-adornedEnd, */
-/* .MuiAutocomplete-inputRoot, */
-/* .MuiInputBase-root-MuiOutlinedInput-root */
-    {
+.city .MuiInputBase-root {
     height: 56px;
 }
 

@@ -1,0 +1,66 @@
+.receipt {
+    margin-bottom: 30px;
+}
+
+.selector-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+    position: fixed;
+    left: 35%;
+    animation: glow-shadow 1s infinite alternate;
+    cursor: pointer;
+}
+
+.selector-2 .fa {
+    font-size: 24px;
+}
+
+@keyframes glow-shadow {
+    0% {
+        box-shadow: 0 0 10px black;
+    }
+
+    50% {
+        box-shadow: 0 0 15px #C1121F;
+    }
+
+    100% {
+        box-shadow: 0 0 20px black;
+    }
+}
+
+@media (max-width:950px) {
+    .div-selector {
+        top: 430px;
+    }
+}
+
+@media (max-width:1300px) {
+    .selector-2 {
+        left: 33%;
+    }
+}
+
+@media (max-width:1000px) {
+    .selector-2 {
+        left: 30%;
+    }
+}
+
+@media (max-width:900px) {
+    .selector-2 {
+        left: 27%;
+    }
+}
+
+@media (max-width:700px) {
+    .selector-2 {
+        left: 20%;
+    }
+}
