@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import * as xlsx from 'xlsx';
 
 import { Container } from "@mui/system";
 import Dialog from "@mui/material/Dialog";
@@ -17,8 +18,6 @@ import t1 from "../../../IMAGES/t1.png";
 import t2 from "../../../IMAGES/t2.png";
 
 import "./Management.css";
-
-import * as xlsx from 'xlsx';
 
 const Management = () => {
   const [open, setOpen] = React.useState(false);
@@ -145,9 +144,9 @@ const Management = () => {
               allProducts?.filter(
                 (product) =>
                   product.name.toLowerCase().startsWith(search.toLowerCase())
-              ) */}
+              )
 
-            {/* .map((product, index) => { */}
+                .map((product, index) => { */}
             {currentItems ? (
               currentItems.map((product) => {
                 return (
@@ -158,7 +157,8 @@ const Management = () => {
               })
             ) : (
               <p>No products available</p>
-            )}
+            )
+            }
           </div>
         </div>
         <Pagination

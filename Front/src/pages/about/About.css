@@ -56,3 +56,20 @@
  .caption4 {
      margin-left: 15px;
  }
+
+ @media (max-width:915px) {
+    .gallery{
+        max-width: 650px;
+    }
+    .gallery img{
+        height: 100px;
+    }
+ }
+ @media (max-width:650px) {
+    .gallery{
+        max-width: 350px;
+    }
+    .gallery img{
+        height: 110px;
+    }
+ }

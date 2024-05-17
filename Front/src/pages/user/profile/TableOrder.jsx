@@ -49,7 +49,9 @@ const TableOrder = ({ id }) => {
 
     fetchData();
   }, [idPerson]);
+  
   console.log(userData);
+
   return (
     <div className="profile-user">
 
@@ -78,13 +80,11 @@ const TableOrder = ({ id }) => {
                 <TableCell align="center" >
                   {user.date}</TableCell>
                 <TableCell align="center" >
-                  {user._id}</TableCell> {/* Display userId */}
-                {/* Display fullAddress */}
+                  {user._id}</TableCell>
                 <TableCell align="center" >
                   {user.branch}</TableCell>
                 <TableCell align="center" >
                   {user.totalPrice} ₪</TableCell>{" "}
-                {/* Display totalPrice */}
                 <TableCell align="center" >
 
                   <Button onClick={() => handleOpenModal(user)}
@@ -102,11 +102,11 @@ const TableOrder = ({ id }) => {
       <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         sx={{
-          width: '100%', // רוחב מלא
-          height: '100%', // גובה מלא
+          width: '100%', 
+          height: '100%', 
           display: 'flex',
-          justifyContent: 'center', // מרכז אופקי
-          alignItems: 'center', // מרכז אנכי
+          justifyContent: 'center', 
+          alignItems: 'center', 
         }}>
         <DialogContent>
           <DialogContentText id="alert-dialog-description"
@@ -115,20 +115,6 @@ const TableOrder = ({ id }) => {
               height: 480,
             }}
           >
-            {/* <Box
-            component="form"
-            sx={{
-              "& > :not(style)": { m: 1, width: "25ch" },
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: "white",
-              justifyContent: "center",
-              gap: "1rem",
-              width: "50%",
-              margin: "auto",
-            }}
-          > */}
             <h2 style={{ color: "#C1121F", fontWeight: "bold", marginBottom: 10 }}>פרטי הזמנה</h2>
             <Table className="table table-bordered">
               <TableHead>

@@ -50,7 +50,7 @@ router.post("/user/:id/new_order", async (req, res) => {
       await newOrder.save();
       res
         .status(200)
-        .send({ message: "Order creact successfully", cart: cart });
+        .send({ message: "Order create successfully", cart: cart });
     } catch (err) {
       console.error(err);
       res.status(500).send({ error: "Something went wrong" });

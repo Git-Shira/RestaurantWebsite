@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import * as xlsx from 'xlsx';
 
-import { Table, TableHead, TableBody, TableRow, TableCell, Button } from "@mui/material";
+import { Table, TableHead, TableBody, TableRow, TableCell, Button, Container } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import AOS from 'aos';
 
 import t1 from "../../../IMAGES/t1.png";
 import t2 from "../../../IMAGES/t2.png";
 
-import * as xlsx from 'xlsx';
+import "./TableAdmin.css";
 
 const TableAdmin = () => {
   const [userData, setUserData] = useState(null);
@@ -94,118 +96,134 @@ const TableAdmin = () => {
         <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
       </div>
 
-      <div style={{ marginRight: 280, marginTop: "10px", display: "flex", alignItems: "center", marginBottom: "10px" }}>
-        <strong
-          style={{
-            marginLeft: 5,
-            // marginRight: 320,
-            color: "#C1121F",
-            fontSize: "larger"
-          }}
-        >סינון לפי סניף:&nbsp;</strong>
-
-        <FormControl sx={{ marginRight: 2 }}>
-          <InputLabel id="filter-label">בחירת סניף</InputLabel>
-          <Select
-            labelId="branch-label"
-            id="branch"
-            label="בחירת סניף"
-            fullWidth
-            required
-            value={selectedBranch}
-            // defaultValue={"0"}
-            onChange={handleChange}
-            color="error"
-            sx={{ width: 180, }}
+      <Grid container spacing={1}
+        style={{ alignItems: "center" }}>
+        <Grid item md={8.75} xs={9}  >
+          <div
+            className="table-admin-search"
+            style={{
+              marginTop: "10px",
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "10px"
+            }}
           >
-            <MenuItem value={"אשדוד"}>אשדוד</MenuItem>
-            <MenuItem value={"באר שבע"}>באר שבע</MenuItem>
-            <MenuItem value={"רמת גן"}>רמת גן</MenuItem>
-            <MenuItem value={"תל אביב"}>תל אביב</MenuItem>
-            <MenuItem value={"לוד"}>לוד</MenuItem>
-            <MenuItem value={"ראש העין"}>ראש העין</MenuItem>
-            <MenuItem value={"כפר סבא"}>כפר סבא</MenuItem>
-            <MenuItem value={"נתניה"}>נתניה</MenuItem>
-            <MenuItem value={"עפולה"}>עפולה</MenuItem>
-            <MenuItem value={"קרית אתא"}>קרית אתא</MenuItem>
-          </Select>
-        </FormControl>
-
-
-        <div className="reset">
-          {(selectedBranch &&
-            <button className="btn"
-              onClick={() => {
-                resetFilter();
+            <strong
+              style={{
+                marginLeft: 5,
+                // marginRight: 320,
+                color: "#C1121F",
+                fontSize: "larger"
               }}
-              style={{ marginRight: 85 }}>איפוס סינון</button>
-          )}
-        </div>
+            >סינון לפי סניף:&nbsp;</strong>
 
-      </div>
-      <div className="orders">
-        <button variant="contained" className="btn" onClick={exportToExcel} style={{ marginRight: 1113, marginTop: -60.5, display: "flex" }}>ייצוא ל-Excel</button>
-      </div>
+            <FormControl sx={{ marginRight: 2 }}>
+              <InputLabel id="filter-label">בחירת סניף</InputLabel>
+              <Select
+                labelId="branch-label"
+                id="branch"
+                label="בחירת סניף"
+                fullWidth
+                required
+                value={selectedBranch}
+                onChange={handleChange}
+                color="error"
+                sx={{ width: 180, }}
+              >
+                <MenuItem value={"אשדוד"}>אשדוד</MenuItem>
+                <MenuItem value={"באר שבע"}>באר שבע</MenuItem>
+                <MenuItem value={"רמת גן"}>רמת גן</MenuItem>
+                <MenuItem value={"תל אביב"}>תל אביב</MenuItem>
+                <MenuItem value={"לוד"}>לוד</MenuItem>
+                <MenuItem value={"ראש העין"}>ראש העין</MenuItem>
+                <MenuItem value={"כפר סבא"}>כפר סבא</MenuItem>
+                <MenuItem value={"נתניה"}>נתניה</MenuItem>
+                <MenuItem value={"עפולה"}>עפולה</MenuItem>
+                <MenuItem value={"קרית אתא"}>קרית אתא</MenuItem>
+              </Select>
+            </FormControl>
 
-      {loading ? (
-        <p
-          style={{ marginTop: "20px" }}
-        >טוען...</p>
-      ) : error ? (
-        <p
-          style={{ marginTop: "20px" }}
-        >Error: {error.message}</p>
-      ) : (
-        <Table className="table table-bordered" style={{
-          maxWidth: 1000, marginTop: "20px"
-        }}>
-          <TableHead>
-            <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
-              <TableCell align="center" > תאריך</TableCell>
-              <TableCell align="center" >מספר הזמנה</TableCell>{" "}
-              <TableCell align="center" >סניף</TableCell>{" "}
-              <TableCell align="center" >שם המזמין</TableCell>
-              <TableCell align="center" >סוג איסוף</TableCell>
-              <TableCell align="center" >אופן תשלום</TableCell>
-              <TableCell align="center" >מחיר כולל</TableCell>
-              <TableCell align="center" >פרטי הזמנה</TableCell>
-            </TableRow>
+            <div className="reset">
+              {(selectedBranch &&
+                <button className="btn"
+                  onClick={() => {
+                    resetFilter();
+                  }}
+                  style={{ marginRight: 85 }}>איפוס סינון</button>
+              )}
+            </div>
 
-          </TableHead>
-          <TableBody>
-            {userData?.filter(
-              (user) =>
-              (selectedBranch === ""
-                ? true
-                : user.branch === selectedBranch)
-            ).map((user) => (
-              <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }} key={user._id}>
-                <TableCell align="center" >
-                  {user.date}</TableCell>
-                <TableCell align="center" >
-                  {user._id}</TableCell>
-                <TableCell align="center" >
-                  {user.branch}</TableCell>
-                <TableCell align="center" >
-                  {user.fullName}</TableCell>
-                <TableCell align="center" >
-                  {user.typePay}</TableCell>
-                <TableCell align="center" >
-                  {user.typeCollect}</TableCell>
-                <TableCell align="center" >
-                  {user.totalPrice} ₪</TableCell>
-                <TableCell align="center" >
-                  <Button onClick={() => handleOpenModal(user)}
-                    sx={{ color: "#C1121F", "&:hover": { backgroundColor: "black", color: "white" } }}
-                  > פרטי הזמנה
-                  </Button>
-                </TableCell>
+          </div>
+        </Grid>
+        <Grid item sm={2} xs={3}>
+          <div className="orders">
+            <button variant="contained" className="btn" onClick={exportToExcel}
+            >ייצוא ל-Excel</button>
+          </div>
+        </Grid>
+      </Grid>
 
+      {
+        loading ? (
+          <p
+            style={{ marginTop: "20px" }}
+          >טוען...</p>
+        ) : error ? (
+          <p
+            style={{ marginTop: "20px" }}
+          >Error: {error.message}</p>
+        ) : (
+          <Table className="table table-bordered" style={{
+            maxWidth: 1000, marginTop: "20px"
+          }}>
+            <TableHead>
+              <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
+                <TableCell align="center" > תאריך</TableCell>
+                <TableCell align="center" >מספר הזמנה</TableCell>{" "}
+                <TableCell align="center" >סניף</TableCell>{" "}
+                <TableCell align="center" >שם המזמין</TableCell>
+                <TableCell align="center" >סוג איסוף</TableCell>
+                <TableCell align="center" >אופן תשלום</TableCell>
+                <TableCell align="center" >מחיר כולל</TableCell>
+                <TableCell align="center" >פרטי הזמנה</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )}
+
+            </TableHead>
+            <TableBody>
+              {userData?.filter(
+                (user) =>
+                (selectedBranch === ""
+                  ? true
+                  : user.branch === selectedBranch)
+              ).map((user) => (
+                <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }} key={user._id}>
+                  <TableCell align="center" >
+                    {user.date}</TableCell>
+                  <TableCell align="center" >
+                    {user._id}</TableCell>
+                  <TableCell align="center" >
+                    {user.branch}</TableCell>
+                  <TableCell align="center" >
+                    {user.fullName}</TableCell>
+                  <TableCell align="center" >
+                    {user.typePay}</TableCell>
+                  <TableCell align="center" >
+                    {user.typeCollect}</TableCell>
+                  <TableCell align="center" >
+                    {user.totalPrice} ₪</TableCell>
+                  <TableCell align="center" >
+                    <Button onClick={() => handleOpenModal(user)}
+                      sx={{ color: "#C1121F", "&:hover": { backgroundColor: "black", color: "white" } }}
+                    > פרטי הזמנה
+                    </Button>
+                  </TableCell>
+
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )
+      }
       <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         sx={{
@@ -244,7 +262,7 @@ const TableAdmin = () => {
           </DialogContentText>
         </DialogContent>
       </Dialog>
-    </div>
+    </div >
   );
 };
 

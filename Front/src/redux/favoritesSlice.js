@@ -11,7 +11,6 @@ const favoritesSlice = createSlice({
   reducers: {
     // Add an item to favorites
     addToFavorites: (state, action) => {
-      // debugger;
       const exists = state.favorites.some(
         (item) => item._id === action.payload._id
       );

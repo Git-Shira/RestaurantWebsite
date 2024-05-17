@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { format } from 'date-fns';
 
 import { Container, TextField } from "@mui/material";
 import Alert from "@mui/material/Alert";
@@ -16,7 +15,6 @@ import "./ForgotPassword.css";
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [date, setDate] = useState("");
     const [phone, setPhone] = useState("");
 
     const navigation = useNavigate();
@@ -34,12 +32,9 @@ const ForgotPassword = () => {
         }
         if (!password) {
             error.password = "שדה חובה";
-        } else if (password.length < 6) {
-            error.password = "הסיסמא חייבת להיות באורך של 6 תווים לפחות";
+        } else if (password.length < 8) {
+            error.password = "הסיסמא חייבת להיות באורך של 8 תווים לפחות";
         }
-        // if (!date) {
-        //     error.date = "שדה חובה";
-        // }
         if (!phone) {
             error.phone = "שדה חובה";
         } else if (phone.length !== 10) {
@@ -51,20 +46,10 @@ const ForgotPassword = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // debugger;
         if (Validate()) {
-            // const dataObj = new Date(date);
-            // const year = dataObj.getFullYear();
-            // const month = dataObj.getMonth() + 1;
-            // const day = dataObj.getDate();
-            // const newDate = `${year}-${month}-${day}`;
-            // const dateFormat = 'dd/MM/yyyy';
-            // const formattedDate = format(dataObj, dateFormat);
             const userData = {
                 email: email,
                 newPassword: password,
-                // date: newDate,
-                // date: formattedDate,
                 phone: phone
             };
             try {
@@ -75,7 +60,6 @@ const ForgotPassword = () => {
 
                 if (response.status === 200) {
                     setSuccess("הסיסמא שונתה בהצלחה");
-                    // alert("הסיסמא שונתה בהצלחה");
                     setTimeout(() => {
                         navigation("/signIn");
                     }, 2000);
@@ -110,7 +94,6 @@ const ForgotPassword = () => {
                 </div>
 
                 <div style={{ marginTop: "10px" }}>
-                    {/* <form onSubmit={handleSubmit} style={{marginTop:"10px"}}> */}
                     <div className="spacer">
                         <TextField
                             label="כתובת דוא''ל"
@@ -127,27 +110,10 @@ const ForgotPassword = () => {
                             color="error"
                         />
                     </div>
-                    {/* <div className="spacer">
-                        <TextField
-                            label="תאריך לידה"
-                            type="date"
-                            variant="outlined"
-                            fullWidth
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            data-aos="fade-left"
-                            data-aos-duration="1000"
-                            required
-                            error={vaildationError.date}
-                            helperText={vaildationError.date}
-                            margin="normal"
-                            color="error"
-                        />
-                    </div> */}
                     <div className="spacer">
                         <TextField
                             label="פלאפון"
-                            // type="number"
+                            type="number"
                             variant="outlined"
                             fullWidth
                             value={phone}
@@ -180,7 +146,6 @@ const ForgotPassword = () => {
                     </div>
                     <button
                         className="btn btn-shadow"
-                        // type="submit"
                         onClick={handleSubmit}
                         variant="contained"
                         color="primary"
@@ -190,7 +155,6 @@ const ForgotPassword = () => {
                     >
                         עדכון סיסמא
                     </button>
-                    {/* </form> */}
                 </div>
             </div>
             {success && (

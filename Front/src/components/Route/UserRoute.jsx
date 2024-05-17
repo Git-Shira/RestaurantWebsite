@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { Route, Routes, Navigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Edit from "../../pages/user/edit/Edit";

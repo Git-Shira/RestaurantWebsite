@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { format } from 'date-fns';
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -22,7 +21,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
-  // const [date, setDate] = useState("");
   const [phone, setPhone] = useState("");
 
   const [error, setError] = useState("");
@@ -54,15 +52,12 @@ const SignUp = () => {
     }
     if (!password) {
       error.password = "שדה חובה";
-    } else if (password.length < 6) {
-      error.password = "הסיסמא חייבת להיות באורך של 6 תווים לפחות";
+    } else if (password.length < 8) {
+      error.password = "הסיסמא חייבת להיות באורך של 8 תווים לפחות";
     }
-    // if (!date) {
-    //   error.date = "שדה חובה";
-    // }
     if (!phone) {
       error.phone = "שדה חובה";
-    } else if (phone.length !== 10 ) {
+    } else if (phone.length !== 10) {
       error.phone = "מספר הפלאפון אינו תקין";
     }
     setVaildationError(error);
@@ -72,13 +67,6 @@ const SignUp = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (Validate()) {
-      // const dataObj = new Date(date);
-      // const year = dataObj.getFullYear();
-      // const month = dataObj.getMonth() + 1;
-      // const day = dataObj.getDate();
-      // const newDate = `${year}-${month}-${day}`;
-      // const dateFormat = 'dd/MM/yyyy';
-      // const formattedDate = format(dataObj, dateFormat);
       const userData = {
         fullName: fullName,
         email: email,
@@ -152,23 +140,6 @@ const SignUp = () => {
 
         <br />
 
-        {/* <TextField
-          id="outlined-basic"
-          type="date"
-          label="תאריך לידה"
-          variant="outlined"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-          required
-          onChange={(e) => setDate(e.target.value)}
-          helperText={vaildationError.date}
-          error={vaildationError.date}
-          // inputProps={{
-          //   pattern: "\\d{4}-\\d{2}-\\d{2}",
-          //   title: "Please use the yyyy-mm-dd format",
-          // }}
-          color="error"
-        /> */}
         <TextField
           id="outlined-basic"
           type="number"
@@ -181,12 +152,9 @@ const SignUp = () => {
           onChange={(e) => setPhone(e.target.value)}
           helperText={vaildationError.phone}
           error={vaildationError.phone}
-          // inputProps={{
-          //   pattern: "\\d{4}-\\d{2}-\\d{2}",
-          //   title: "Please use the yyyy-mm-dd format",
-          // }}
           color="error"
         />
+
         <br />
 
         <TextField
@@ -204,7 +172,9 @@ const SignUp = () => {
           helperText={vaildationError.email}
           color="error"
         />
+
         <br />
+        
         <TextField
           id="outlined-basic"
           label="סיסמא"

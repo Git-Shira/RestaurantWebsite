@@ -20,7 +20,6 @@ import "./SignIn.css";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [userDe, setUserDe] = useState({});
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -43,8 +42,8 @@ const SignIn = () => {
     }
     if (!password) {
       error.password = "שדה חובה";
-    } else if (password.length < 6) {
-      error.password = "הסיסמא חייבת להיות באורך של 6 תווים לפחות";
+    } else if (password.length < 8) {
+      error.password = "הסיסמא חייבת להיות באורך של 8 תווים לפחות";
     }
     setVaildationError(error);
     return Object.keys(error).length === 0;
@@ -66,21 +65,17 @@ const SignIn = () => {
         dispatch(login(user));
         localStorage.setItem("user", JSON.stringify(user));
         if (response.status === 200) {
-          if (user.permission === "admin") {
+          // if (user.permission === "admin") {
             setSuccess("התחברת בהצלחה");
-            // alert("התחברת בהצלחה");
-            setTimeout(() => {
-              // navigation("/Admin/Management");
-              navigation("/Menu");
-
-            }, 2000);
-          } else {
-            setSuccess("התחברת בהצלחה");
-            // alert("התחברת בהצלחה");
             setTimeout(() => {
               navigation("/Menu");
             }, 2000);
-          }
+          // } else {
+          //   setSuccess("התחברת בהצלחה");
+          //   setTimeout(() => {
+          //     navigation("/Menu");
+          //   }, 2000);
+          // }
         }
       }
       catch (error) {
@@ -112,7 +107,6 @@ const SignIn = () => {
         </div>
 
         <div style={{ marginTop: "10px" }} >
-          {/* <form onSubmit={handleSubmit} style={{marginTop:"10px"}} > */}
           <div className="spacer">
             <TextField
               className="rGap"
@@ -162,7 +156,6 @@ const SignIn = () => {
           </div>
           <button
             className="btn btn-shadow"
-            // type="submit"
             onClick={handleSubmit}
             variant="contained"
             color="primary"
@@ -174,7 +167,6 @@ const SignIn = () => {
           >
             כניסה
           </button>
-          {/* </form> */}
         </div>
 
         <Typography

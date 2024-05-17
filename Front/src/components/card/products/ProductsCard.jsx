@@ -71,36 +71,10 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
             background:(product.show === 1) ? "white" : "#bfc0c0",
             borderColor:(product.show === 1) ? "#C1121F" : "black"
         }}>
-          {/* <IconButton className="eye"
-                      onClick={() => {
-                        setSelectedProduct(product);
-                        setOpen(true);
-                      }}>
-                      <Visibility />
-                    </IconButton> */}
-
-          {/* <IconButton
-                      className="heart"
-                      onClick={() => {
-                        if (!user) {
-                          //  alert("אינך מחובר לחשבון");
-                          handleOpenIt();
-                        }
-                        else
-                          handleFavoriteToggle(product);
-
-                      }}
-                    >
-                      <FavoriteIcon
-                        color={isFavorite(product._id) ? "error" : "disabled"}
-                      />
-                    </IconButton> */}
-
           <img src={product.image} alt={product.name} />
           <div style={{ height: 20, alignItems: "center", margin: 0 }}>
             <h5> {product.name}</h5>
           </div>
-          {/* <span className="span"> {product.price} ₪</span> */}
           <br />
           <div style={{ marginTop: 8 }}>
             <button className="btn"
@@ -140,10 +114,11 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
         }}
       >
         <div className="dialog-delete-border">
-          <DialogContent sx={{
+          <DialogContent className="dialog-delete-product"
+          sx={{
             height: 150,
           }}>
-            <DialogContentText id="alert-dialog-description"
+            <DialogContentText id="alert-dialog-description-delete-product"
               sx={{
                 marginTop: 5, textAlign: "center", width: 350,
               }}>

@@ -176,8 +176,7 @@ const Products = () => {
     const intervalId = setInterval(nextMessage, 10000); // 5000 milliseconds = 5 seconds
 
     return () => clearInterval(intervalId);
-  }); // Run once on mount to start the automatic rotation
-  // }, []); // Run once on mount to start the automatic rotation
+  }, []); // Run once on mount to start the automatic rotation
 
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
@@ -265,63 +264,68 @@ const Products = () => {
             );
           })}
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 50 }}>
+        <div className="search-products" style={{ display: 'flex', alignItems: 'center', marginBottom: 50 }}>
           <strong style={{
             marginLeft: 5, color: "#C1121F", fontSize: "larger"
           }}>
             סינון לפי מחיר: &nbsp;
           </strong>
 
-          {priceRange[1]} ₪
+          <div style={{alignItems: 'center', display: "flex" }}>
+            {priceRange[1]} ₪
 
-          <Box
-            sx={{
-              width: 300, marginRight: 2, marginLeft: 2
-            }}
-          >
-            <Slider
-              className="price-range"
-              value={priceRange}
-              onChange={handleChangePrice}
-              aria-label="Price range"
-              defaultValue={20}
-              valueLabelDisplay="auto"
-              step={10}
-              marks
-              min={0}
-              max={449}
-              sx={{ color: "#C1121F", height: 10, }} />
-          </Box>
-          {priceRange[0]} ₪
-
-          <strong
-            style={{
-              marginRight: 50,
-              marginLeft: 5,
-              color: "#C1121F",
-              fontSize: "larger"
-            }}
-          >חיפוש מנה: &nbsp;</strong>
-          <TextField
-            id="outlined-basic"
-            className="search"
-            label="חיפוש"
-            type={"text"}
-            variant="outlined"
-            onChange={handleSearchChange}
-            value={search}
-            defaultValue={search}
-            autoComplete="off"
-            color="error"
-          />
-          <div className="reset">
-            {(selectCategory.length !== 0 || search || priceRange[0] !== 0 || priceRange[1] !== 449) &&
-              <button className="btn"
-                onClick={() => {
-                  resetFilter();
-                }}
-                style={{ marginRight: 85 }}>איפוס סינון</button>
-            }
+            <Box
+              sx={{
+                width: 300,
+                marginRight: 2, marginLeft: 2
+              }}
+            >
+              <Slider
+                className="price-range"
+                value={priceRange}
+                onChange={handleChangePrice}
+                aria-label="Price range"
+                defaultValue={20}
+                valueLabelDisplay="auto"
+                step={10}
+                marks
+                min={0}
+                max={449}
+                sx={{ color: "#C1121F", height: 10, }} />
+            </Box>
+            {priceRange[0]} ₪
+          </div>
+          <div style={{alignItems: 'center', display: "flex" }}>
+            <strong
+              className="search-dishes"
+              style={{
+                marginRight: 50,
+                marginLeft: 5,
+                color: "#C1121F",
+                fontSize: "larger"
+              }}
+            >חיפוש מנה: &nbsp;</strong>
+            <TextField
+              id="outlined-basic"
+              className="search"
+              label="חיפוש"
+              type={"text"}
+              variant="outlined"
+              onChange={handleSearchChange}
+              value={search}
+              defaultValue={search}
+              autoComplete="off"
+              color="error"
+            />  
+                      </div>
+            <div className="reset">
+              {(selectCategory.length !== 0 || search || priceRange[0] !== 0 || priceRange[1] !== 449) &&
+                <button className="btn"
+                  onClick={() => {
+                    resetFilter();
+                  }}
+                  style={{ marginRight: 85 }}>איפוס סינון</button>
+              }
           </div>
         </div>
 
@@ -410,10 +414,11 @@ const Products = () => {
                   הוספה לסל
                 </button>
                 <h2 className="price"> {selectedProduct.price} ₪</h2>
-                {(selectedProduct.filter === "1" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "13") && <i className="fas fa-crown">&nbsp; מנה פופולארית </i>}
-                {(selectedProduct.filter === "2" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-pepper-hot">&nbsp; מנה חריפה </i>}
-                {(selectedProduct.filter === "3" || selectedProduct.filter === "13" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-leaf">&nbsp; מנה טבעונית </i>}
-              </DialogContentText>
+                <div className="filter-values">
+                  {(selectedProduct.filter === "1" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "13") && <i className="fas fa-crown">&nbsp; מנה פופולארית </i>}
+                  {(selectedProduct.filter === "2" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-pepper-hot">&nbsp; מנה חריפה </i>}
+                  {(selectedProduct.filter === "3" || selectedProduct.filter === "13" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-leaf">&nbsp; מנה טבעונית </i>}
+                </div></DialogContentText>
             </DialogContent>
           </Dialog>
         )}

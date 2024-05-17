@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { createSlice, configureStore } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 // Helper function to calculate total amount
@@ -46,7 +45,6 @@ const cartSlice = createSlice({
 
     // Action to remove an item from the cart
     removeItem: (state, action) => {
-      // debugger;
       state.items = state.items.filter((item) => item.id !== action.payload);
       state.totalAmount = calculateTotalAmount(state.items);
     },

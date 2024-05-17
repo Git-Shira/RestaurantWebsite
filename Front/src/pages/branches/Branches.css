@@ -40,6 +40,32 @@
     background-color: white;
 }
 
-.branches .accordion-icon{
-    color:#C1121F;
+.branches .accordion-icon {
+    color: #C1121F;
+}
+
+@media (max-width: 850px) {
+    .branches {
+        width: 750px;
+    }
+}
+
+@media (max-width: 750px) {
+    .branches {
+        width: 600px;
+    }
+
+    .branches .location {
+        margin-right: 300px;
+    }
+}
+
+@media (max-width: 650px) {
+    .branches {
+        width: 470px;
+    }
+
+    .branches .location {
+        margin-right: 230px;
+    }
 }

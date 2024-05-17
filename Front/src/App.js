@@ -1,10 +1,5 @@
-// import logo from "./logo.svg";
-
 import React, { useEffect } from "react";
-// import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
-// import Cookies from "js-cookie";
 
 import { useDispatch } from "react-redux";
 import { loadFavoritesFromCookies } from "./redux/favoritesSlice";

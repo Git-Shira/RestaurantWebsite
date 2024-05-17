@@ -1,0 +1,20 @@
+@media(max-width:2000px){
+    .table-admin-search{
+        margin-right: 280px;
+    }
+}
+@media(max-width:1400px){
+    .table-admin-search{
+        margin-right: 200px;
+    }
+}
+@media(max-width:1200px){
+    .table-admin-search{
+        margin-right: 120px;
+    }
+}
+@media(max-width:1000px){
+    .table-admin-search{
+        margin-right: 40px;
+    }
+}

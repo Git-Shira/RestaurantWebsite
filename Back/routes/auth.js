@@ -6,7 +6,6 @@ const User = require("../model/User");
 const bcrypt = require("bcrypt");
 
 router.post("/register", async (req, res) => {
-  // const { fullName, date, email, password } = req.body;
   const { fullName, phone, email, password } = req.body;
 
   try {
@@ -18,7 +17,6 @@ router.post("/register", async (req, res) => {
     user = new User({
       fullName,
       email,
-      // date,
       phone,
       password,
       permission: "user",
@@ -89,14 +87,14 @@ router.put("/update/:id", async (req, res) => {
 
     // If updating password, hash it before updating (implement hashPassword function)
     if (update.password) {
-     update.password = await hashPassword(update.password);
+      update.password = await hashPassword(update.password);
     }
 
     const user = await User.findByIdAndUpdate(id, update, { new: true });
     if (!user) {
       return res.status(404).send({ error: "User does not exist" });
     }
-    
+
     return res.status(200).send({
       message: "User updated successfully",
       user: { id: user._id, fullName: user.name, email: user.email },
@@ -124,10 +122,8 @@ router.get("/user/id/:email", async (req, res) => {
 });
 
 router.post("/forgot_password", async (req, res) => {
-  // const { email, date, newPassword } = req.body;
   const { email, phone, newPassword } = req.body;
 
-  // console.log("forgot password", email, date, newPassword);
   console.log("forgot password", email, phone, newPassword);
 
   try {
@@ -135,9 +131,6 @@ router.post("/forgot_password", async (req, res) => {
     if (!user) {
       return res.status(400).send({ error: "User does not exist" });
     }
-    // if (user.date !== date) {
-    //   return res.status(405).send({ error: "Invalid date" });
-    // }
     if (user.phone !== phone) {
       return res.status(405).send({ error: "Invalid phone" });
     }

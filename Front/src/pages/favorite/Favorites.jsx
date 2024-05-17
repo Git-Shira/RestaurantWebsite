@@ -6,7 +6,6 @@ import { Container } from "@mui/system";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText } from "@mui/material";
-// import { DialogContentText, Select } from "@mui/material";
 import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Visibility } from "@mui/icons-material";
@@ -67,22 +66,19 @@ const Favorites = () => {
   };
 
   const getProducts = () => {
-    // debugger;
     if (cartFromCookies)
       setProducts(JSON.parse(cartFromCookies));
   };
-  
+
   useEffect(() => {
     if (cartFromCookies) {
       getProducts();
     }
-    // console.log(products);
   }, [cartFromCookies]);
 
   useEffect(() => {
     getProducts();
-  });
-  // }, []);
+  }, []);
 
   const isFavorite = (productId) => {
     return favorites.some((favorite) => favorite._id === productId);
@@ -128,7 +124,7 @@ const Favorites = () => {
   return (
     <div style={{ minHeight: 610 }}>
       <Container>
-        <div className="title-design">
+        <div className="title-design title-fav">
           <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
           <h1 data-aos="flip-down" data-aos-duration="1000">מוצרים מועדפים</h1>
           <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
@@ -136,7 +132,6 @@ const Favorites = () => {
 
         <div className="dishes" style={{ marginTop: "50px" }}>
           <div className="box-container">
-            {/* {products?.map((product, index) => { */}
             {getAllFavorites ?
               getAllFavorites?.map((product, index) => {
                 console.log(product._id);
@@ -194,11 +189,13 @@ const Favorites = () => {
                 );
               })
               :
-              <div style={{textAlign:"center",justifyContent:"center",width:"1140px",marginTop:100,fontSize:"x-large"}}>סמנו את המוצרים האהובים עליכם וצפו בהם כאן :)</div>
-              }
+              <div style={{ textAlign: "center", justifyContent: "center", width: "1140px", marginTop: 100, fontSize: "x-large" }}>סמנו את המוצרים האהובים עליכם וצפו בהם כאן :)</div>
+            }
           </div>
         </div>
+
         <div style={{ height: 30 }}></div>
+
         {selectedProduct && (
           <Dialog
             className="product-dialog"
@@ -233,10 +230,11 @@ const Favorites = () => {
                 {selectedProduct.show === 0 && (<h3 className="no-available" style={{ marginTop: "-45px", marginRight: "360px" }}>-אזל מהמלאי-</h3>)}
 
                 <h2 className="price"> {selectedProduct.price} ₪</h2>
-                {(selectedProduct.filter === "1" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "13") && <i className="fas fa-crown">&nbsp; מנה פופולארית </i>}
-                {(selectedProduct.filter === "2" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-pepper-hot">&nbsp; מנה חריפה </i>}
-                {(selectedProduct.filter === "3" || selectedProduct.filter === "13" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-leaf">&nbsp; מנה טבעונית </i>}
-              </DialogContentText>
+                <div className="filter-values">
+                  {(selectedProduct.filter === "1" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "13") && <i className="fas fa-crown">&nbsp; מנה פופולארית </i>}
+                  {(selectedProduct.filter === "2" || selectedProduct.filter === "12" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-pepper-hot">&nbsp; מנה חריפה </i>}
+                  {(selectedProduct.filter === "3" || selectedProduct.filter === "13" || selectedProduct.filter === "123" || selectedProduct.filter === "23") && <i className="fas fa-leaf">&nbsp; מנה טבעונית </i>}
+                </div></DialogContentText>
             </DialogContent>
           </Dialog>
         )}

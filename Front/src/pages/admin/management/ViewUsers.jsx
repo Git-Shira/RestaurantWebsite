@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import * as xlsx from 'xlsx';
 
 import { Container } from "@mui/system";
 import { Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
-// import { Table, TableHead, TableBody, TableRow, TableCell, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import AOS from 'aos';
 
@@ -11,9 +12,6 @@ import t1 from "../../../IMAGES/t1.png";
 import t2 from "../../../IMAGES/t2.png";
 
 import "./ViewUsers.css";
-
-// import ReactHTMLTableToExcel from 'react-html-table-to-excel'; 
-import * as xlsx from 'xlsx';
 
 const ViewUsers = () => {
     const [allUsers, setallUsers] = useState([]);
@@ -63,15 +61,22 @@ const ViewUsers = () => {
                 <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
             </div>
 
-            <Container style={{maxWidth:600}}>
-            <button variant="contained" className="btn" onClick={exportToExcel} style={{marginRight:380,marginBottom:"10px"}}>ייצוא ל-Excel</button>
+            <Container style={{ maxWidth: 600 }}>
+                <Grid container spacing={1}>
+                    <Grid item xs={8}>
+                    </Grid>
+                    <Grid item xs={4} alignItems={"left"} >
+                        <button variant="contained" className="btn" onClick={exportToExcel} style={{
+                            // marginRight: 380,
+                            marginBottom: "10px"
+                        }}>ייצוא ל-Excel</button>
+                    </Grid>
+                </Grid>
 
-                <Table className="table table-bordered" style={{ width: 500, marginTop: "10px" }} >
-
+                <Table className="table table-bordered" style={{ maxWidth: 500, marginTop: "10px" }} >
                     <TableHead>
                         <TableRow style={{ borderColor: "#C1121F" }}>
                             <TableCell style={{ textAlign: "center" }}> שם משתמש</TableCell>
-                            {/* <TableCell style={{ textAlign: "center" }}> תאריך לידה</TableCell> */}
                             <TableCell style={{ textAlign: "center" }}> פלאפון</TableCell>
                             <TableCell style={{ textAlign: "center" }}>כתובת דוא''ל</TableCell>
                         </TableRow>
@@ -81,7 +86,6 @@ const ViewUsers = () => {
                             allUsers.map((user) => (
                                 <TableRow style={{ borderColor: "#C1121F", textAlign: "center" }}>
                                     <TableCell style={{ textAlign: "center" }}>{user.fullName}</TableCell> {/* Display userId */}
-                                    {/* <TableCell style={{ textAlign: "center" }}>{user.date}</TableCell> Display User date */}
                                     <TableCell style={{ textAlign: "center" }}>0{user.phone}</TableCell> {/* Display User phone */}
                                     <TableCell style={{ textAlign: "center" }}>{user.email}</TableCell> {/* Display User email */}
                                 </TableRow>

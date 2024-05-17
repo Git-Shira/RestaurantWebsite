@@ -2,3 +2,14 @@
 .product-dialog .no-available {
     font-weight: bold;
 }
+
+@media(max-width:600px) {
+    
+    .title-fav .t1 {
+        height: 130px;
+    }
+   
+    .title-fav .t2 {
+        height: 100px;
+    }
+}

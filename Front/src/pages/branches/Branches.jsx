@@ -47,7 +47,7 @@ const Branches = () => {
                         id="panel1bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי אשדוד</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             דרום
                         </Typography>
                     </AccordionSummary>
@@ -88,7 +88,7 @@ const Branches = () => {
                         id="panel2bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי באר שבע</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             דרום
                         </Typography>
                     </AccordionSummary>
@@ -134,7 +134,7 @@ const Branches = () => {
                         id="panel3bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי רמת גן</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             מרכז
                         </Typography>
                     </AccordionSummary>
@@ -178,7 +178,7 @@ const Branches = () => {
                         id="panel4bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי צומת הפיל ת"א</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             מרכז
                         </Typography>
                     </AccordionSummary>
@@ -219,7 +219,7 @@ const Branches = () => {
                         id="panel5bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי אקספרס לוד</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             מרכז
                         </Typography>
                     </AccordionSummary>
@@ -259,7 +259,7 @@ const Branches = () => {
                         id="panel6bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי ראש העין</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             מרכז
                         </Typography>
                     </AccordionSummary>
@@ -308,7 +308,7 @@ const Branches = () => {
                         id="panel7bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי כפר סבא</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             שרון
                         </Typography>
                     </AccordionSummary>
@@ -355,7 +355,7 @@ const Branches = () => {
                         id="panel8bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי נתניה</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             שרון
                         </Typography>
                     </AccordionSummary>
@@ -400,7 +400,7 @@ const Branches = () => {
                         id="panel9bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי עפולה</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             צפון
                         </Typography>
                     </AccordionSummary>
@@ -443,7 +443,7 @@ const Branches = () => {
                         id="panel10bh-header"
                     >
                         <Typography sx={{ width: '33%', flexShrink: 0 }}>טריאקי קרית אתא</Typography>
-                        <Typography sx={{ color: 'text.secondary', marginRight: 50 }}>
+                        <Typography className="location" sx={{ color: 'text.secondary', marginRight: 50 }}>
                             צפון
                         </Typography>
                     </AccordionSummary>

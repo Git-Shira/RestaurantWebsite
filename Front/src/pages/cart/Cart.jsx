@@ -13,6 +13,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import TextField from "@mui/material/TextField";
+import { Grid } from "@mui/material";
 
 import { useDispatch } from "react-redux";
 import { removeItem, editItem } from "../../redux/cartSlice";
@@ -53,8 +54,6 @@ const Cart = () => {
     const updateCookieCart = parsedCookieCart.filter((item) => item.id !== id);
     console.log("Updating cookies with:", updateCookieCart);
 
-    // Cookies.set("cart", JSON.stringify(updateCookieCart));
-
     dispatch(removeItem(id));
 
     const updatedCart = cartData.filter((item) => item.id !== id);
@@ -74,7 +73,6 @@ const Cart = () => {
   };
 
   const handleQuantityChange = (id, newQuantity) => {
-    // debugger;
     newQuantity = parseInt(newQuantity, 10);
     if (newQuantity > 0) {
       const updatedCart = cartData.map((item) => {
@@ -97,23 +95,28 @@ const Cart = () => {
   }, []);
 
   return (
-    <div className="cart" style={{ minHeight: 610}}>
+    <div className="cart" 
+    style={{ minHeight: 610 }}
+    >
       <div className="title-design">
         <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
         <h1 data-aos="flip-down" data-aos-duration="1000">סל קניות</h1>
         <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
       </div>
-      <div style={{ textAlign: "center", marginTop: "10px" }}>
-        <h3 style={{ color: "white", marginRight: "-535px" }}>סה"כ לתשלום : &nbsp;
-          <span style={{ color: "#C1121F", fontWeight: "bold" }}>{totalPrice}</span>       ₪</h3>
 
-        {totalPrice > 0 && (<Link to="/Pay" className="btn"
-          style={{ marginTop: -70, marginRight: 660 }}
-        >
-          מעבר לתשלום
-        </Link>)}
+      <Grid container spacing={1} style={{alignItems:"center", justifyContent:"center",marginBottom:15}} >
+        <Grid item lg={4} md={7} sm={8} xs={8} style={{textAlign:"right"}} >
+          <h3 style={{ color: "white" }}>סה"כ לתשלום : &nbsp;
+            <span style={{ color: "#C1121F", fontWeight: "bold" }}>{totalPrice}</span>       ₪</h3>
+        </Grid>
+        <Grid item lg={2} md={2} sm={3} xs={2} style={{textAlign:"left"}}>
+          {totalPrice > 0 && (<Link to="/Pay" className="btn"
+          >
+            מעבר לתשלום
+          </Link>)}
+        </Grid>
+      </Grid>
 
-      </div>
       <Table className="table table-bordered"
         style={{
           maxWidth: 800,
@@ -183,11 +186,11 @@ const Cart = () => {
         aria-describedby="alert-dialog-description"
         className="dialog-delete"
         sx={{
-          width: '100%', 
-          height: '100%', 
+          width: '100%',
+          height: '100%',
           display: 'flex',
-          justifyContent: 'center', 
-          alignItems: 'center' 
+          justifyContent: 'center',
+          alignItems: 'center'
         }}>
         <div className="dialog-delete-border">
           <DialogContent sx={{

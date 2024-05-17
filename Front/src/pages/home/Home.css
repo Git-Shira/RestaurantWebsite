@@ -175,3 +175,43 @@ section.big-deal {
     height: 200px;
     animation: my-scrolimg 3s ease infinite;
 }
+
+@media (max-width: 830px) {
+    .my-container-img img {
+        height: 150px;
+    }
+
+    .s2,
+    .s3 {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 580px) {
+    .my-container-img img {
+        height: 100px;
+    }
+
+    .s2,
+    .s3 {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 950px) {
+    .carousel-item {
+        height: 700px;
+    }
+    .div-selector{
+        margin-top: -230px;
+    }
+}
+
+@media (max-width: 750px) {
+    .carousel-item {
+        height: 650px;
+    }
+    .div-selector{
+        margin-top: -230px;
+    }
+}

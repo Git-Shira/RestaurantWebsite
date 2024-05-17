@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Edit from "../../pages/admin/management/edit/Edit";
