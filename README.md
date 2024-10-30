@@ -1,4 +1,4 @@
-## Restaurant Website
+# Restaurant Website
 
 # Table of Contents
 
