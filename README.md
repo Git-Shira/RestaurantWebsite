@@ -34,7 +34,7 @@
 - **`redux/`**: Contains the Redux setup for state management.
 - **`App.js`**: The main application component that sets up routing and renders the necessary components.
 
-## Libraries and Tools
+## Tools and Libraries 
 
 - **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
 - **Express**: A web application framework for Node.js, designed for building APIs.
