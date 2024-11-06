@@ -8,7 +8,7 @@ import "./Edit.css";
 
 const Edit = ({ product, handleEditSuccess }) => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   console.log(product);
   const [editproduct, setEditProduct] = useState({
     name: product.name || "",
@@ -56,7 +56,8 @@ const Edit = ({ product, handleEditSuccess }) => {
     <form onSubmit={handleSubmit} className="edit">
       <Box key={product._id} component="form">
         <Grid container spacing={2} style={{
-          alignItems: "center" }} >
+          alignItems: "center"
+        }} >
           <Grid item xs={12}>
             <TextField
               id="name"
@@ -99,7 +100,7 @@ const Edit = ({ product, handleEditSuccess }) => {
               color="error"
             />
           </Grid>
-          <Grid item md={1.9} xs={3}>
+          <Grid item md={2} xs={2.5}>
             <TextField
               id="price"
               label="מחיר"
@@ -111,9 +112,12 @@ const Edit = ({ product, handleEditSuccess }) => {
                 setEditProduct({ ...editproduct, price: e.target.value })
               }
               color="error"
+              InputProps={{
+                style: { fontSize: '0.875rem' }
+              }}
             />
           </Grid>
-          <Grid item md={2.9} xs={6}>
+          <Grid item xs="auto">
             <FormControl  >
               <InputLabel id="show-label">מלאי</InputLabel>
               <Select
@@ -127,13 +131,14 @@ const Edit = ({ product, handleEditSuccess }) => {
                 onChange={(e) =>
                   setEditProduct({ ...editproduct, show: e.target.value })
                 }
+                sx={{ fontSize: '0.875rem' }}
               >
                 <MenuItem value={"0"}>אזל מהמלאי</MenuItem>
                 <MenuItem value={"1"}>קיים במלאי</MenuItem>
               </Select>
             </FormControl>
           </Grid>
-          <Grid item md={4.8} xs={6.5}  >
+          <Grid item xs="auto" >
             <FormControl>
               <InputLabel id="filter-label">פילטר</InputLabel>
               <Select
@@ -147,6 +152,7 @@ const Edit = ({ product, handleEditSuccess }) => {
                 onChange={(e) =>
                   setEditProduct({ ...editproduct, filter: e.target.value })
                 }
+                sx={{ fontSize: '0.875rem' }}
               >
                 <MenuItem value={"0"}>ללא פילטר</MenuItem>
                 <MenuItem value={"1"}>פופולארית</MenuItem>
@@ -159,7 +165,7 @@ const Edit = ({ product, handleEditSuccess }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item md={1.8} xs={5.5} >
+          <Grid item xs="auto">
             <FormControl required >
               <InputLabel id="category-label">קטגוריה</InputLabel>
               <Select
@@ -172,7 +178,8 @@ const Edit = ({ product, handleEditSuccess }) => {
                 onChange={(e) =>
                   setEditProduct({ ...editproduct, category: e.target.value })
                 }
-                >
+                sx={{ fontSize: '0.875rem' }}
+              >
                 <MenuItem value={"ראשונות"}>ראשונות</MenuItem>
                 <MenuItem value={"מרקים"}>מרקים</MenuItem>
                 <MenuItem value={"סושי ספיישל"}>סושי ספיישל</MenuItem>
