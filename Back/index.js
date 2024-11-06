@@ -9,8 +9,6 @@ const cartRoutes = require('./routes/cart');
 app.use(express.json());
 
 const cors = require("cors");
-app.use(cors());
-
 app.use(cors({
     origin: '*',
     credentials: true
