@@ -12,8 +12,8 @@ const cors = require("cors");
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://restaurant-website-git-shiras-projects.vercel.app', 
-  credentials: true 
+    origin: '*',
+    credentials: true
 }));
 
 connectDB();
