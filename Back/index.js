@@ -9,12 +9,16 @@ const cartRoutes = require('./routes/cart');
 app.use(express.json());
 
 const cors = require("cors");
+
 app.use(cors({
-    origin: '*',
-    credentials: true
+    origin: 'https://restaurant-website-gray-gamma.vercel.app', 
+    credentials: true 
 }));
 
-app.options('*', cors());
+app.options('*', cors({
+    origin: 'https://restaurant-website-gray-gamma.vercel.app',
+    credentials: true
+}));
 
 connectDB();
 app.use("/auth", authRoutes);
