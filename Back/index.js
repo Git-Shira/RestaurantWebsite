@@ -16,6 +16,6 @@ connectDB();
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 if (PORT)
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
