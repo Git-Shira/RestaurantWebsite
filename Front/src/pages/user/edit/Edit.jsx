@@ -13,6 +13,8 @@ import t1 from "../../../IMAGES/t1.png";
 import t2 from "../../../IMAGES/t2.png";
 
 const Edit = ({ id }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [user, setUser] = useState({});
   const [userId, setUserId] = useState("");
   const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
@@ -37,7 +39,8 @@ const Edit = ({ id }) => {
       try {
         // await axios.get(
           const response = await axios.get(
-          `http://localhost:3000/auth/user/${id._id}`
+          `${apiUrl}/auth/user/${id._id}`
+          // `http://localhost:3000/auth/user/${id._id}`
         );
         setUser(response.data.user);
         setUserId(id._id);
@@ -84,14 +87,15 @@ const Edit = ({ id }) => {
 
       try {
         const response = await axios.put(
-          `http://localhost:3000/auth/update/${userId}/`,
+          `${apiUrl}/auth/update/${userId}/`,
+          // `http://localhost:3000/auth/update/${userId}/`,
           userData
         );
         console.log("User updated:", response.data);
         if (response.status === 200) {
           localStorage.setItem("user", JSON.stringify(userData));
           Cookies.set("user", JSON.stringify(userData));
-
+          setError("");
           setSuccess("העדכון בוצע בהצלחה");
           setTimeout(() => {
             navigate("/User/profile");
@@ -100,6 +104,7 @@ const Edit = ({ id }) => {
         }
 
       } catch (error) {
+        setSuccess("");
         if (error.response.status === 404) {
           setError("המשתמש לא קיים במערכת");
         }

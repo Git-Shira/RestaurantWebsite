@@ -7,6 +7,8 @@ import { Grid } from "@mui/material";
 import "./Edit.css";
 
 const Edit = ({ product, handleEditSuccess }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   console.log(product);
   const [editproduct, setEditProduct] = useState({
     name: product.name || "",
@@ -24,7 +26,8 @@ const Edit = ({ product, handleEditSuccess }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/products/update/${product?._id}`,
+        `${apiUrl}/products/update/${product?._id}`,
+        // `http://localhost:3000/products/update/${product?._id}`,
         editproduct
       );
 

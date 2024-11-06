@@ -20,6 +20,8 @@ import t2 from "../../../IMAGES/t2.png";
 import "./Management.css";
 
 const Management = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [open, setOpen] = React.useState(false);
   const [allProducts, setAllProducts] = useState([]);
 
@@ -57,7 +59,8 @@ const Management = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/products/all");
+      const response = await axios.get(`${apiUrl}/products/all`);
+      // const response = await axios.get("http://localhost:3000/products/all");
       setAllProducts(response?.data.products);
     } catch (error) {
       console.log(error);

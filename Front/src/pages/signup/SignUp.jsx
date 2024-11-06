@@ -16,6 +16,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./SignUp.css";
 
 const SignUp = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -78,19 +80,22 @@ const SignUp = () => {
 
       try {
         const response = await axios.post(
-          "http://localhost:3000/auth/register",
+          `${apiUrl}/auth/register`,
+          // "http://localhost:3000/auth/register",
           userData,
           config
         );
         console.log(response.status);
 
         if (response.status === 200) {
+          setError("");
           setSuccess("ההרשמה בוצעה בהצלחה");
           setTimeout(() => {
             navigate("/signIn");
           }, 2000);
         }
       } catch (error) {
+        setSuccess("");
         if (error.response.status === 400) {
           setError("כתובת הדוא''ל כבר קיימת במערכת");
         }

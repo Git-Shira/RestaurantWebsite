@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import {  Table,  TableHead,  TableBody,  TableRow,  TableCell,  Button } from "@mui/material";
+import { Table, TableHead, TableBody, TableRow, TableCell, Button } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText } from "@mui/material";
 
 const TableOrder = ({ id }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   console.log("id", id);
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,30 +37,37 @@ const TableOrder = ({ id }) => {
       try {
         if (idPerson) {
           const response = await axios.get(
-            `http://localhost:3000/cart/user/${idPerson}/getOrders`
+            `${apiUrl}/cart/user/${idPerson}/getOrders`
+            // `http://localhost:3000/cart/user/${idPerson}/getOrders`
           );
-          setUserData(response.data.orders);
-          setLoading(false);
+          if (response.status === 200) {
+            setUserData(response.data.orders);
+            setLoading(false);
+          }
         }
 
       } catch (error) {
-        setError(error);
         setLoading(false);
+        if (error.response.status === 404) {
+          setError({ message: "לא בוצעו עדיין הזמנות" });
+        } else if (error.response.status === 500) {
+          setError(error);
+        }
       }
     };
 
     fetchData();
   }, [idPerson]);
-  
+
   console.log(userData);
 
   return (
     <div className="profile-user">
 
       {loading ? (
-        <p style={{ color: "white" }}>טוען...</p>
+        <p style={{ color: "white" ,marginTop: 30}}>טוען...</p>
       ) : error ? (
-        <p style={{ color: "white" }}>Error: {error.message}</p>
+        <p style={{ color: "white" ,marginTop: 30}}>{error.message}</p>
       ) : (
         <Table className="table table-bordered"
           style={{
@@ -102,11 +111,11 @@ const TableOrder = ({ id }) => {
       <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         sx={{
-          width: '100%', 
-          height: '100%', 
+          width: '100%',
+          height: '100%',
           display: 'flex',
-          justifyContent: 'center', 
-          alignItems: 'center', 
+          justifyContent: 'center',
+          alignItems: 'center',
         }}>
         <DialogContent>
           <DialogContentText id="alert-dialog-description"

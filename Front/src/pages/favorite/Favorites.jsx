@@ -22,6 +22,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./Favorites.css";
 
 const Favorites = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [products, setProducts] = React.useState([]);
   const [selectedProduct, setSelectedProduct] = React.useState();
   const [open, setOpen] = React.useState(false);
@@ -103,7 +105,8 @@ const Favorites = () => {
   const showFavorites = async (product) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/products/get/${product._id}`
+        `${apiUrl}/products/get/${product._id}`
+        // `http://localhost:3000/products/get/${product._id}`
       );
       setGetAllFavorites((prev) => [...prev, response.data.product]);
     } catch (error) {

@@ -15,6 +15,8 @@ import AOS from 'aos';
 import "./ProductsCard.css";
 
 const ProductsCard = ({ product, key, fetchProducts }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [open, setOpen] = React.useState(false);
   // const [editProductId, setEditProductId] = React.useState(null); // State to store the ID of the product to be edited
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
@@ -41,7 +43,8 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
     try {
       await axios.delete(
         // const response = await axios.delete(
-        `http://localhost:3000/products/delete/${product._id}`
+        `${apiUrl}/products/delete/${product._id}`
+        // `http://localhost:3000/products/delete/${product._id}`
       );
       alert("המוצר נמחק בהצלחה");
       setOpen(false);

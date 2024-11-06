@@ -20,6 +20,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./Pay.css";
 
 const Pay = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [id, setId] = useState(null);
   const [fullName, setFullName] = useState("");
 
@@ -171,12 +173,14 @@ const Pay = () => {
       if (id) {
         try {
           const response = await axios.post(
-            `http://localhost:3000/cart/user/${id}/new_order`,
+            `${apiUrl}/cart/user/${id}/new_order`,
+            // `http://localhost:3000/cart/user/${id}/new_order`,
             userData
           );
           const user = response.data;
           if (user) {
             if (response.status === 200) {
+              setError("");
               setSuccess("הזמנתך התקבלה בהצלחה");
 
               setTimeout(() => {
@@ -185,11 +189,14 @@ const Pay = () => {
 
               dispatch(clearCart());
             }
-            else
+            else {
+              setSuccess("");
               setError("התחברו לחשבון כדי להשלים את ההזמנה");
+            }
           }
 
         } catch (err) {
+          setSuccess("");
           if (err.response.status === 400) {
             setError("התחברו לחשבון כדי להשלים את ההזמנה");
           }
@@ -202,12 +209,14 @@ const Pay = () => {
       else {
         try {
           const response = await axios.post(
-            `http://localhost:3000/cart/add`,
+            `${apiUrl}/cart/add`,
+            // `http://localhost:3000/cart/add`,
             userData
           );
           const order = response.data;
           if (order) {
             if (response.status === 200) {
+              setError("");
               setSuccess("הזמנתך התקבלה בהצלחה");
 
               setTimeout(() => {
@@ -216,11 +225,14 @@ const Pay = () => {
 
               dispatch(clearCart());
             }
-            else
+            else {
+              setSuccess("");
               setError("משהו השתבש, נסו שוב")
+            }
           }
 
         } catch (err) {
+          setSuccess("");
           if (err.response.status === 500) {
             setError("משהו השתבש, נסו שוב")
           }
@@ -436,7 +448,7 @@ const Pay = () => {
                         width: 223
                       }}
                       value={city}
-                      onChange={handleChangeSettlement} 
+                      onChange={handleChangeSettlement}
                       renderInput={(params) => <TextField {...params} label="עיר" />}
                     />
                   </Grid>

@@ -27,6 +27,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./Products.css";
 
 const Products = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const productsDivRef = useRef(null);
 
   const [products, setProducts] = React.useState([]);
@@ -94,7 +96,8 @@ const Products = () => {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/products/all");
+      const response = await axios.get(`${apiUrl}/products/all`);
+      // const response = await axios.get("http://localhost:3000/products/all");
       console.log(response);
       setProducts(response.data.products);
     } catch (error) {

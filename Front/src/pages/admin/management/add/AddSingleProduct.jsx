@@ -8,6 +8,8 @@ import { Grid } from "@mui/material";
 import "./AddSingleProduct.css";
 
 const AddSingleProduct = ({ setOpen }) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [product, setProduct] = React.useState({
     name: "",
     description: "",
@@ -27,7 +29,8 @@ const AddSingleProduct = ({ setOpen }) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/products/add",
+        `${apiUrl}/products/add`,
+        // "http://localhost:3000/products/add",
         updateProduct
       );
       console.log(response.data);

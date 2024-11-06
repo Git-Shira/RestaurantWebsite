@@ -14,11 +14,14 @@ import t2 from "../../../IMAGES/t2.png";
 import "./ViewUsers.css";
 
 const ViewUsers = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     const [allUsers, setallUsers] = useState([]);
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/auth/all");
+            const response = await axios.get(`${apiUrl}/auth/all`);
+            // const response = await axios.get("http://localhost:3000/auth/all");
             setallUsers(response?.data.users);
         } catch (error) {
             console.log(error);

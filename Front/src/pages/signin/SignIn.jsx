@@ -18,6 +18,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./SignIn.css";
 
 const SignIn = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -58,7 +60,8 @@ const SignIn = () => {
       };
       try {
         const response = await axios.post(
-          "http://localhost:3000/auth/login",
+            `${apiUrl}/auth/login`,
+          // "http://localhost:3000/auth/login",
           userData
         );
         const user = response.data.user;
@@ -66,6 +69,7 @@ const SignIn = () => {
         localStorage.setItem("user", JSON.stringify(user));
         if (response.status === 200) {
           // if (user.permission === "admin") {
+            setError("");
             setSuccess("התחברת בהצלחה");
             setTimeout(() => {
               navigation("/Menu");
@@ -79,6 +83,7 @@ const SignIn = () => {
         }
       }
       catch (error) {
+        setSuccess("");
         if (error.response.status === 400) {
           setError("המשתמש לא קיים במערכת");
         }

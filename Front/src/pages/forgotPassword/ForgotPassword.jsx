@@ -13,6 +13,8 @@ import t2 from "../../IMAGES/t2.png";
 import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
@@ -54,11 +56,13 @@ const ForgotPassword = () => {
             };
             try {
                 const response = await axios.post(
-                    "http://localhost:3000/auth/forgot_password",
+                    `${apiUrl}/auth/forgot_password`,
+                    // "http://localhost:3000/auth/forgot_password",
                     userData
                 );
 
                 if (response.status === 200) {
+                    setError("");
                     setSuccess("הסיסמא שונתה בהצלחה");
                     setTimeout(() => {
                         navigation("/signIn");
@@ -66,6 +70,7 @@ const ForgotPassword = () => {
                 }
 
             } catch (err) {
+                setSuccess("");
                 if (err.response.status === 400) {
                     setError("המשתמש לא קיים במערכת");
                 }

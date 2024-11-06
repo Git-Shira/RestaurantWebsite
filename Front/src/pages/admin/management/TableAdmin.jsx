@@ -16,6 +16,8 @@ import t2 from "../../../IMAGES/t2.png";
 import "./TableAdmin.css";
 
 const TableAdmin = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,7 +33,8 @@ const TableAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/cart/all`);
+        const response = await axios.get(`${apiUrl}/cart/all`);
+        // const response = await axios.get(`http://localhost:3000/cart/all`);
         setUserData(response.data.carts);
         setLoading(false);
       } catch (error) {
