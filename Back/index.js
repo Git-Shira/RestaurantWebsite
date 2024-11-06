@@ -16,6 +16,8 @@ app.use(cors({
     credentials: true
 }));
 
+app.options('*', cors());
+
 connectDB();
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
