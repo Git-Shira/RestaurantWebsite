@@ -6,10 +6,16 @@ const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
 const cartRoutes = require('./routes/cart');
 
-const cors = require("cors");
 app.use(express.json());
 
+const cors = require("cors");
 app.use(cors());
+
+app.use(cors({
+  origin: 'https://restaurant-website-git-shiras-projects.vercel.app', 
+  credentials: true 
+}));
+
 connectDB();
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
