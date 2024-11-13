@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { TextField, Autocomplete, Box, FormControl, InputLabel, MenuItem, Select, FormControlLabel, FormLabel, RadioGroup, Radio } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import { Grid } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../redux/cartSlice";
@@ -21,6 +22,8 @@ import "./Pay.css";
 
 const Pay = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   const [id, setId] = useState(null);
   const [fullName, setFullName] = useState("");
@@ -345,7 +348,7 @@ const Pay = () => {
   };
 
   return (
-    <div style={{ minHeight: 850 }}>
+    <div style={{ minHeight: "100vh" }}>
       {!paid && (
         <div>
           <div className="title-design">
@@ -379,7 +382,7 @@ const Pay = () => {
                 required
                 error={vaildationError.fullName}
                 helperText={vaildationError.fullName}
-                style={{ marginRight: -200, width: 225 }}
+                sx={{ marginRight: { md: -25, xs: 0 }, width: 225 }}
               />
 
               <FormControl required={!city} disabled={!!city} style={{ marginRight: -200 }}>
@@ -393,7 +396,7 @@ const Pay = () => {
                   value={branch}
                   onChange={handleChangeBranch}
                   color="error"
-                  sx={{ width: 225, }}
+                  sx={{ width: 225, marginRight: { md: 0, xs: 25 }, }}
                 >
                   <MenuItem value={"אשדוד"}>אשדוד</MenuItem>
                   <MenuItem value={"באר שבע"}>באר שבע</MenuItem>
@@ -408,7 +411,7 @@ const Pay = () => {
                 </Select>
               </FormControl>
 
-              <FormControl style={{ marginRight: -200 }}>
+              <FormControl sx={{ marginRight: { md: -25, xs: 0 } }}>
                 <FormLabel id="demo-controlled-radio-buttons-group" sx={{ marginRight: 4, color: "white" }}>סוג איסוף</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-controlled-radio-buttons-group"
@@ -424,7 +427,7 @@ const Pay = () => {
 
               {typeCollect === "משלוח" && (<div style={{ marginRight: 35, display: "flex" }}>
                 <Grid container spacing={1} style={{ alignItems: "center", justifyContent: "center" }} >
-                  <Grid item md={6} sm={12}  >
+                  <Grid item md={6} sm={8} xs={12}  >
                     <TextField
                       id="outlined-basic"
                       label="כתובת מלאה"
@@ -436,8 +439,7 @@ const Pay = () => {
                       helperText={vaildationError.street}
                     />
                   </Grid>
-
-                  <Grid item md={6} sm={12} >
+                  <Grid item md={6} sm={8} xs={12} >
                     <Autocomplete
                       id="grouped-demo"
                       className="city"
@@ -445,7 +447,7 @@ const Pay = () => {
                       groupBy={(option) => option[0]} // מקבץ לפי האות הראשונה
                       getOptionLabel={(option) => option}
                       sx={{
-                        width: 223
+                        width: { md: 223 }
                       }}
                       value={city}
                       onChange={handleChangeSettlement}
@@ -456,7 +458,7 @@ const Pay = () => {
               </div>
               )}
 
-              <FormControl style={{ marginRight: -200 }}>
+              <FormControl sx={{ marginRight: { md: -25, xs: 0 } }}>
                 <FormLabel id="demo-controlled-radio-buttons-group" sx={{ marginRight: 4, color: "white" }}>סוג תשלום</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-controlled-radio-buttons-group"
@@ -554,35 +556,36 @@ const Pay = () => {
                 id="outlined-multiline-static"
                 label="הערות על ההזמנה"
                 multiline
-                rows={4}
+                // rows={4}
+                rows={isSmallScreen ? 2 : 4}
                 value={comments}
                 onChange={(e) => setComments(e.target.value)}
-                sx={{ marginTop: 2, marginBottom: 2, marginRight: -3, height: 100, width: 400 }}
+                sx={{ marginTop: 2, marginBottom: 2, marginRight: { md: 0, sm: 5, xs: 3 }, height: 100, width: { md: 400, sm: 250, xs: 250 } }}
                 color="error"
               />
 
               <div style={{ textAlign: "center", marginTop: 50 }}>
-                <h3 style={{ color: "white", marginRight: "-170px" }}>סה"כ לתשלום : &nbsp;
+                <h3 className="total-payment" style={{ color: "white", marginRight: -150 }}>סה"כ לתשלום : &nbsp;
                   <span style={{ color: "#C1121F", fontWeight: "bold" }}>{cart.totalAmount}</span>       ₪</h3>
 
-                <Link to="/Pay" className="btn btn-shadow" onClick={handleSubmit}
-                  style={{ marginTop: -70, marginRight: 400 }}
-                >
+                <Link to="/Pay" className="btn btn-shadow btn-pay" onClick={handleSubmit}
+                  style={{ display: "flex", marginTop: -45, marginRight: 350 }}>
                   תשלום
                 </Link>
               </div>
+
             </Box>
           </div >
 
           {success &&
-            (<Alert severity="success" style={{ margin: "0 auto", width: 500, justifyContent: "center" }}
+            (<Alert severity="success" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginTop: 5 }}
             >
               {success}
             </Alert>)
           }
           {
             error && (
-              <Alert severity="error" style={{ margin: "0 auto", width: 500, justifyContent: "center" }}
+              <Alert severity="error" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginTop: 5 }}
               >
                 {error}
               </Alert>

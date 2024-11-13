@@ -4,12 +4,21 @@
 }
 
 @media(max-width:600px) {
-    
     .title-fav .t1 {
-        height: 130px;
+        height: 130px !important;
     }
-   
+
     .title-fav .t2 {
-        height: 100px;
+        height: 100px !important;
+    }
+}
+
+@media(max-width:470px) {
+    .title-fav .t1 {
+        height: 100px !important;
+    }
+
+    .title-fav .t2 {
+        height: 80px !important;
     }
 }

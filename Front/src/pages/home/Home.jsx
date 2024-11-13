@@ -35,8 +35,8 @@ const Home = () => {
 
     useEffect(() => {
         AOS.init();
-      }, []);
-      
+    }, []);
+
     return (
         <div className="main">
 
@@ -82,11 +82,11 @@ const Home = () => {
             <div className="container-fluid">
 
 
-                <section className="my-container">
+                <section className="my-container about">
 
 
                     <p style={{ marginTop: 50 }}>
-                        <div data-aos="fade-down"
+                        <div className="title-p" data-aos="fade-down"
                             data-aos-easing="linear"
                             data-aos-duration="500"
                         >
@@ -98,7 +98,7 @@ const Home = () => {
                             data-aos-duration="1000">                        טריאקי מטבח אסייתי וסושי בר, רשת המציעה תפריט ייחודי על טהרת הסושי ומנות ספיישל מהמטבח האסייתי העשיר באווירה שלווה וחמימה של המזרח הרחוק, תוך שימוש בחומרי גלם איכותיים וטריים.
                         </div>
                         <br />
-                        <div data-aos="flip-left"
+                        <div className="sec-p" data-aos="flip-left"
                             data-aos-easing="ease-out-cubic"
                             data-aos-duration="1000">
                             בנוסף לחוויה המיוחדת במסעדות הרשת, טריאקי מגיעה עד בית הלקוח עם מנות אסייתיות ומגוון מגשי אירוח מפנקים .

@@ -70,6 +70,7 @@ const Edit = ({ product, handleEditSuccess }) => {
                 setEditProduct({ ...editproduct, name: e.target.value })
               }
               color="error"
+              sx={{ marginTop: 2 }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -100,7 +101,7 @@ const Edit = ({ product, handleEditSuccess }) => {
               color="error"
             />
           </Grid>
-          <Grid item md={2} xs={2.5}>
+          <Grid item md={2} xs={4}>
             <TextField
               id="price"
               label="מחיר"

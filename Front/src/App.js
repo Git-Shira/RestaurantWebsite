@@ -22,9 +22,13 @@ import Branches from "./pages/branches/Branches";
 
 import "./App.css";
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 function App() {
+    const theme = createTheme();
+
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
         dispatch(loadFavoritesFromCookies());
     }, [dispatch]);
@@ -33,25 +37,27 @@ function App() {
     }, [dispatch]);
 
     return (
-        <Router>
-            <Progress />
-            <Header />
+        <ThemeProvider theme={theme}>
+            <Router>
+                <Progress />
+                <Header />
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/SignUp" element={<SignUp />} />
-                <Route path="/SignIn" element={<SignIn />} />
-                <Route path="/Admin/*" element={<AdminRoute />} />
-                <Route path="/User/*" element={<UserRoute />} />
-                <Route path="/Menu" element={<Products />} />
-                <Route path="/Cart" element={<Cart />} />
-                <Route path="/Pay" element={<Pay />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="/forgotPassword" element={<ForgotPassword />} />
-                <Route path="/About" element={<About />} />
-                <Route path="/Branches" element={<Branches />} />
-            </Routes>
-        </Router>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/SignUp" element={<SignUp />} />
+                    <Route path="/SignIn" element={<SignIn />} />
+                    <Route path="/Admin/*" element={<AdminRoute />} />
+                    <Route path="/User/*" element={<UserRoute />} />
+                    <Route path="/Menu" element={<Products />} />
+                    <Route path="/Cart" element={<Cart />} />
+                    <Route path="/Pay" element={<Pay />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="/forgotPassword" element={<ForgotPassword />} />
+                    <Route path="/About" element={<About />} />
+                    <Route path="/Branches" element={<Branches />} />
+                </Routes>
+            </Router>
+        </ThemeProvider>
     );
 }
 

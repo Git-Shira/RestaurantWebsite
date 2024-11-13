@@ -6,6 +6,8 @@ import { Container } from "@mui/system";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { TextField } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 
@@ -95,7 +97,7 @@ const Management = () => {
   };
 
   return (
-    <div className="management" style={{ minHeight: 610 }}>
+    <div className="management" style={{ minHeight: "100vh" }}>
 
 
       <div className="title-design">
@@ -178,6 +180,21 @@ const Management = () => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
+          <DialogTitle>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+              sx={{
+                position: 'absolute',
+                left: 15,
+                top: 0,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
           <DialogContent>
             <AddSingleProduct setOpen={setOpen} />
           </DialogContent>

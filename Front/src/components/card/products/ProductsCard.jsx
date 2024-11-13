@@ -7,6 +7,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText } from "@mui/material";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';  
 
 import Edit from "../../../pages/admin/management/edit/Edit";
 
@@ -69,11 +71,11 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
   return (
     <div>
       <div >
-        <div className="box-admin" data-aos="zoom-in" 
-        style={{
-            background:(product.show === 1) ? "white" : "#bfc0c0",
-            borderColor:(product.show === 1) ? "#C1121F" : "black"
-        }}>
+        <div className="box-admin" data-aos="zoom-in"
+          style={{
+            background: (product.show === 1) ? "white" : "#bfc0c0",
+            borderColor: (product.show === 1) ? "#C1121F" : "black"
+          }}>
           <img src={product.image} alt={product.name} />
           <div style={{ height: 20, alignItems: "center", margin: 0 }}>
             <h5> {product.name}</h5>
@@ -109,18 +111,33 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
         aria-describedby="alert-dialog-description"
         className="dialog-delete"
         sx={{
-          width: '100%', 
-          height: '100%', 
+          width: '100%',
+          height: '100%',
           display: 'flex',
-          justifyContent: 'center', 
+          justifyContent: 'center',
           alignItems: 'center'
         }}
       >
+        <DialogTitle>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleClose}
+            aria-label="close"
+            sx={{
+              position: 'absolute',
+              left: 15,
+              top: 0,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <div className="dialog-delete-border">
           <DialogContent className="dialog-delete-product"
-          sx={{
-            height: 150,
-          }}>
+            sx={{
+              height: 150,
+            }}>
             <DialogContentText id="alert-dialog-description-delete-product"
               sx={{
                 marginTop: 5, textAlign: "center", width: 350,
@@ -141,13 +158,28 @@ const ProductsCard = ({ product, key, fetchProducts }) => {
           </DialogActions>
         </div>
       </Dialog>
-      
+
       <Dialog
         open={isEditDialogOpen}
         onClose={handleEditDialogClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <DialogTitle>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleEditDialogClose}
+            aria-label="close"
+            sx={{
+              position: 'absolute',
+              left: 15,
+              top: 0,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           <Edit product={product} handleEditSuccess={handleEditSuccess} />
         </DialogContent>

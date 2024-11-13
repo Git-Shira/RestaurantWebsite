@@ -22,7 +22,7 @@ const Profile = ({ id }) => {
   console.log("id", user);
 
   return (
-    <div style={{ minHeight: 610 }}>
+    <div style={{ minHeight: "100vh" }}>
 
       <Container maxWidth="sm" >
 
@@ -32,7 +32,7 @@ const Profile = ({ id }) => {
           <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
         </div>
 
-        <div style={{marginTop:"10px"}}>
+        <div style={{ marginTop: "10px" }}>
           <h3>
             < span style={{ color: "white", fontWeight: "bold" }}>
               שם:

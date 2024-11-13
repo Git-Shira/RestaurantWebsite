@@ -6,6 +6,8 @@ import { Table, TableHead, TableBody, TableRow, TableCell, Button, Container } f
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { Grid } from "@mui/material";
 
 import AOS from 'aos';
@@ -17,7 +19,7 @@ import "./TableAdmin.css";
 
 const TableAdmin = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -92,7 +94,7 @@ const TableAdmin = () => {
   };
 
   return (
-    <div style={{ minHeight: 610 }}>
+    <div style={{ minHeight: "100vh" }}>
       <div className="title-design">
         <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
         <h1 data-aos="flip-down" data-aos-duration="1000">ארכיון הזמנות</h1>
@@ -176,55 +178,57 @@ const TableAdmin = () => {
             style={{ marginTop: "20px" }}
           >Error: {error.message}</p>
         ) : (
-          <Table className="table table-bordered" style={{
-            maxWidth: 1000, marginTop: "20px"
-          }}>
-            <TableHead>
-              <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
-                <TableCell align="center" > תאריך</TableCell>
-                <TableCell align="center" >מספר הזמנה</TableCell>{" "}
-                <TableCell align="center" >סניף</TableCell>{" "}
-                <TableCell align="center" >שם המזמין</TableCell>
-                <TableCell align="center" >סוג איסוף</TableCell>
-                <TableCell align="center" >אופן תשלום</TableCell>
-                <TableCell align="center" >מחיר כולל</TableCell>
-                <TableCell align="center" >פרטי הזמנה</TableCell>
-              </TableRow>
-
-            </TableHead>
-            <TableBody>
-              {userData?.filter(
-                (user) =>
-                (selectedBranch === ""
-                  ? true
-                  : user.branch === selectedBranch)
-              ).map((user) => (
-                <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }} key={user._id}>
-                  <TableCell align="center" >
-                    {user.date}</TableCell>
-                  <TableCell align="center" >
-                    {user._id}</TableCell>
-                  <TableCell align="center" >
-                    {user.branch}</TableCell>
-                  <TableCell align="center" >
-                    {user.fullName}</TableCell>
-                  <TableCell align="center" >
-                    {user.typePay}</TableCell>
-                  <TableCell align="center" >
-                    {user.typeCollect}</TableCell>
-                  <TableCell align="center" >
-                    {user.totalPrice} ₪</TableCell>
-                  <TableCell align="center" >
-                    <Button onClick={() => handleOpenModal(user)}
-                      sx={{ color: "#C1121F", "&:hover": { backgroundColor: "black", color: "white" } }}
-                    > פרטי הזמנה
-                    </Button>
-                  </TableCell>
-
+          <div style={{ overflowX: 'auto' }}>
+            <Table className="table table-bordered" style={{
+              maxWidth: 1000, marginTop: "20px"
+            }}>
+              <TableHead>
+                <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
+                  <TableCell align="center" > תאריך</TableCell>
+                  <TableCell align="center" >מספר הזמנה</TableCell>{" "}
+                  <TableCell align="center" >סניף</TableCell>{" "}
+                  <TableCell align="center" >שם המזמין</TableCell>
+                  <TableCell align="center" >סוג איסוף</TableCell>
+                  <TableCell align="center" >אופן תשלום</TableCell>
+                  <TableCell align="center" >מחיר כולל</TableCell>
+                  <TableCell align="center" >פרטי הזמנה</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+
+              </TableHead>
+              <TableBody>
+                {userData?.filter(
+                  (user) =>
+                  (selectedBranch === ""
+                    ? true
+                    : user.branch === selectedBranch)
+                ).map((user) => (
+                  <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }} key={user._id}>
+                    <TableCell align="center" >
+                      {user.date}</TableCell>
+                    <TableCell align="center" >
+                      {user._id}</TableCell>
+                    <TableCell align="center" >
+                      {user.branch}</TableCell>
+                    <TableCell align="center" >
+                      {user.fullName}</TableCell>
+                    <TableCell align="center" >
+                      {user.typePay}</TableCell>
+                    <TableCell align="center" >
+                      {user.typeCollect}</TableCell>
+                    <TableCell align="center" >
+                      {user.totalPrice} ₪</TableCell>
+                    <TableCell align="center" >
+                      <Button onClick={() => handleOpenModal(user)}
+                        sx={{ color: "#C1121F", "&:hover": { backgroundColor: "black", color: "white" } }}
+                      > פרטי הזמנה
+                      </Button>
+                    </TableCell>
+
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         )
       }
       <Dialog open={openModal} onClose={handleCloseModal} aria-labelledby="alert-dialog-title"
@@ -236,6 +240,21 @@ const TableAdmin = () => {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
+        <DialogTitle>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleCloseModal}
+            aria-label="close"
+            sx={{
+              position: 'absolute',
+              left: 15,
+              top: 0,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description"
             sx={{

@@ -9,7 +9,7 @@ import "./AddSingleProduct.css";
 
 const AddSingleProduct = ({ setOpen }) => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const [product, setProduct] = React.useState({
     name: "",
     description: "",
@@ -103,7 +103,7 @@ const AddSingleProduct = ({ setOpen }) => {
               color="error"
             />
           </Grid>
-          <Grid item sm={5.3} xs={6}>
+          <Grid item sm={5.3} xs={10}>
             <FormControl required>
               <InputLabel id="filter-label">פילטר</InputLabel>
               <Select
@@ -170,12 +170,13 @@ const AddSingleProduct = ({ setOpen }) => {
       </Box>
 
       <Grid container spacing={2} style={{
-        alignItems: "center" }} >
-        <Grid item  sm={12} xs={11.8} textAlign={"left"}>
+        alignItems: "center"
+      }} >
+        <Grid item sm={12} xs={11.8} textAlign={"left"}>
           <button variant="contained" type="submit" className="btn"
-          style={{ 
-            marginTop:15
-           }}
+            style={{
+              marginTop: 15
+            }}
           >
             הוספה</button>
         </Grid>

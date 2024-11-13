@@ -6,7 +6,8 @@ import { Container } from "@mui/system";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText } from "@mui/material";
-import { IconButton } from "@mui/material";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Visibility } from "@mui/icons-material";
 
@@ -23,7 +24,7 @@ import "./Favorites.css";
 
 const Favorites = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const [products, setProducts] = React.useState([]);
   const [selectedProduct, setSelectedProduct] = React.useState();
   const [open, setOpen] = React.useState(false);
@@ -125,7 +126,7 @@ const Favorites = () => {
   }, [products]);
 
   return (
-    <div style={{ minHeight: 610 }}>
+    <div style={{ minHeight: "100vh" }}>
       <Container>
         <div className="title-design title-fav">
           <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
@@ -213,6 +214,21 @@ const Favorites = () => {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
+            <DialogTitle>
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleClose}
+                aria-label="close"
+                sx={{
+                  position: 'absolute',
+                  left: 50,
+                  top: 15,
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description"
                 sx={{

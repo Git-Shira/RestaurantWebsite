@@ -69,3 +69,13 @@
         margin-right: 230px;
     }
 }
+
+@media (max-width: 500px) {
+    .branches {
+        width: 360px;
+    }
+
+    .branches .location {
+        margin-right: 160px;
+    }
+}

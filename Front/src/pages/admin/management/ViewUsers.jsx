@@ -15,7 +15,7 @@ import "./ViewUsers.css";
 
 const ViewUsers = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
-    
+
     const [allUsers, setallUsers] = useState([]);
 
     const fetchUsers = async () => {
@@ -76,27 +76,29 @@ const ViewUsers = () => {
                     </Grid>
                 </Grid>
 
-                <Table className="table table-bordered" style={{ maxWidth: 500, marginTop: "10px" }} >
-                    <TableHead>
-                        <TableRow style={{ borderColor: "#C1121F" }}>
-                            <TableCell style={{ textAlign: "center" }}> שם משתמש</TableCell>
-                            <TableCell style={{ textAlign: "center" }}> פלאפון</TableCell>
-                            <TableCell style={{ textAlign: "center" }}>כתובת דוא''ל</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {allUsers ? (
-                            allUsers.map((user) => (
-                                <TableRow style={{ borderColor: "#C1121F", textAlign: "center" }}>
-                                    <TableCell style={{ textAlign: "center" }}>{user.fullName}</TableCell> {/* Display userId */}
-                                    <TableCell style={{ textAlign: "center" }}>0{user.phone}</TableCell> {/* Display User phone */}
-                                    <TableCell style={{ textAlign: "center" }}>{user.email}</TableCell> {/* Display User email */}
-                                </TableRow>
-                            )))
-                            :
-                            (<h2>not found</h2>)}
-                    </TableBody>
-                </Table>
+                <div style={{ overflowX: 'auto' }}>
+                    <Table className="table table-bordered" style={{ maxWidth: 500, marginTop: "10px" }} >
+                        <TableHead>
+                            <TableRow style={{ borderColor: "#C1121F" }}>
+                                <TableCell style={{ textAlign: "center" }}> שם משתמש</TableCell>
+                                <TableCell style={{ textAlign: "center" }}> פלאפון</TableCell>
+                                <TableCell style={{ textAlign: "center" }}>כתובת דוא''ל</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {allUsers ? (
+                                allUsers.map((user) => (
+                                    <TableRow style={{ borderColor: "#C1121F", textAlign: "center" }}>
+                                        <TableCell style={{ textAlign: "center" }}>{user.fullName}</TableCell> {/* Display userId */}
+                                        <TableCell style={{ textAlign: "center" }}>0{user.phone}</TableCell> {/* Display User phone */}
+                                        <TableCell style={{ textAlign: "center" }}>{user.email}</TableCell> {/* Display User email */}
+                                    </TableRow>
+                                )))
+                                :
+                                (<h2>not found</h2>)}
+                        </TableBody>
+                    </Table>
+                </div>
             </Container>
         </div>
     );

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { Container, TextField } from "@mui/material";
+import { Container, TextField, IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Alert from "@mui/material/Alert";
 
 import AOS from 'aos';
@@ -14,7 +15,7 @@ import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
-    
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
@@ -24,6 +25,11 @@ const ForgotPassword = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [vaildationError, setVaildationError] = useState({});
+
+    const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const Validate = () => {
         const error = {};
@@ -91,7 +97,7 @@ const ForgotPassword = () => {
 
     return (
         <Container maxWidth="sm">
-            <div className="forgot" style={{ minHeight: 610 }}>
+            <div className="forgot" style={{ minHeight: "100vh" }}>
                 <div className="title-design">
                     <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
                     <h1 data-aos="flip-down" data-aos-duration="1000">שכחתי סיסמא</h1>
@@ -135,7 +141,8 @@ const ForgotPassword = () => {
                     <div className="spacer">
                         <TextField
                             label="סיסמא חדשה"
-                            type="password"
+                            // type="password"
+                            type={showPassword ? "text" : "password"} // Toggle password visibility
                             variant="outlined"
                             fullWidth
                             value={password}
@@ -147,6 +154,15 @@ const ForgotPassword = () => {
                             helperText={vaildationError.password}
                             margin="normal"
                             color="error"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton onClick={togglePasswordVisibility} edge="end" sx={{ left: 0 }}>
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
                         />
                     </div>
                     <button
@@ -163,13 +179,13 @@ const ForgotPassword = () => {
                 </div>
             </div>
             {success && (
-                <Alert severity="success" style={{ margin: "0 auto", width: 500, justifyContent: "center", marginBottom: 15, marginTop: -63 }}
+                <Alert severity="success" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginBottom: 15, marginTop: -10 }}
                 >
                     {success}
                 </Alert>
             )}
             {error && (
-                <Alert severity="error" style={{ margin: "0 auto", width: 500, justifyContent: "center", marginBottom: 15, marginTop: -65 }}
+                <Alert severity="error" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginBottom: 15, marginTop: -10 }}
                 >
                     {error}
                 </Alert>

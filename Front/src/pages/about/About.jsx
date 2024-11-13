@@ -19,7 +19,7 @@ const About = () => {
     }, []);
 
     return (
-        <div className="about" style={{ minHeight: 610 }}>
+        <div className="about" style={{ minHeight: "100vh" }}>
 
             <div className="title-design">
                 <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />

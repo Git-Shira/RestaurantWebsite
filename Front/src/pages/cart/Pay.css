@@ -17,3 +17,29 @@
 .Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #C1121F !important;
 }
+
+@media (max-width: 900px) {
+    .total-payment {
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+
+    .btn-pay {
+        margin-right: 450px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .total-payment {
+        margin-top: -60px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .btn-pay {
+        margin-top: 30px !important;
+        width: 80px;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+}

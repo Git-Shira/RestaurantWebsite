@@ -8,11 +8,13 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText } from "@mui/material";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { IconButton, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Visibility } from "@mui/icons-material";
+import { HeartBroken, Visibility } from "@mui/icons-material";
 import Pagination from "@mui/material/Pagination";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -28,7 +30,7 @@ import "./Products.css";
 
 const Products = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const productsDivRef = useRef(null);
 
   const [products, setProducts] = React.useState([]);
@@ -161,8 +163,8 @@ const Products = () => {
   const messages = [
     'במידה ויש שינוי שאותו אתם רוצים לבצע בהזמנה יש להתקשר לסניף ולבצע שינוי זה ',
     'בעקבות מזג האוויר ייתכנו זמני המתנה ארוכים מהרגיל, אנו פועלים על מנת לספק את ההזמנות מהר ככל האפשר',
-    `לחצו על ה- &nbsp;&nbsp;&nbsp; כדי להוסיף למוצרים האהובים`,
-    `לחצו על ה- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; כדי לראות פרטים נוספים על המנה`,
+    <span>לחצו על ה- <FavoriteIcon /> כדי להוסיף למוצרים האהובים</span>,
+    <span>לחצו על ה- <Visibility /> כדי לראות פרטים נוספים על המנה</span>
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -231,15 +233,10 @@ const Products = () => {
 
         <div className="message-container">
           <h5>שימו לב ! </h5>
-          <br />
-          <h5 key={currentIndex} dangerouslySetInnerHTML={{ __html: messages[currentIndex] }} ></h5>
-
-          {currentIndex === 2 &&
-            <FavoriteIcon className="message-heart" />
-          }
-          {currentIndex === 3 && <Visibility className="message-eye" />}
-
+          {/* <br /> */}
+          <h5 key={currentIndex}>{messages[currentIndex]}</h5>
         </div>
+
         <div className="buttons-container">
           <button onClick={prevMessage} className="btn-prev"><i className="fa fa-caret-right" aria-hidden="true"></i>
           </button>
@@ -274,12 +271,12 @@ const Products = () => {
             סינון לפי מחיר: &nbsp;
           </strong>
 
-          <div style={{alignItems: 'center', display: "flex" }}>
+          <div style={{ alignItems: 'center', display: "flex" }}>
             {priceRange[1]} ₪
 
             <Box
               sx={{
-                width: 300,
+                width: { md: 300, xs: 150 },
                 marginRight: 2, marginLeft: 2
               }}
             >
@@ -298,7 +295,8 @@ const Products = () => {
             </Box>
             {priceRange[0]} ₪
           </div>
-          <div style={{alignItems: 'center', display: "flex" }}>
+
+          <div style={{ alignItems: 'center', display: "flex" }}>
             <strong
               className="search-dishes"
               style={{
@@ -319,16 +317,16 @@ const Products = () => {
               defaultValue={search}
               autoComplete="off"
               color="error"
-            />  
-                      </div>
-            <div className="reset">
-              {(selectCategory.length !== 0 || search || priceRange[0] !== 0 || priceRange[1] !== 449) &&
-                <button className="btn"
-                  onClick={() => {
-                    resetFilter();
-                  }}
-                  style={{ marginRight: 85 }}>איפוס סינון</button>
-              }
+            />
+          </div>
+          <div className="reset">
+            {(selectCategory.length !== 0 || search || priceRange[0] !== 0 || priceRange[1] !== 449) &&
+              <button className="btn"
+                onClick={() => {
+                  resetFilter();
+                }}
+                style={{ marginRight: 85 }}>איפוס סינון</button>
+            }
           </div>
         </div>
 
@@ -403,6 +401,21 @@ const Products = () => {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
+            <DialogTitle>
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleClose}
+                aria-label="close"
+                sx={{
+                  position: 'absolute',
+                  left: 50,
+                  top: 15,
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description"
                 sx={{
@@ -439,8 +452,32 @@ const Products = () => {
             justifyContent: 'center',
             alignItems: 'center'
           }}>
+          <DialogTitle>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleCloseIt}
+              aria-label="close"
+              sx={{
+                position: 'absolute',
+                left: 15,
+                top: 0,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
           <DialogContent
-            sx={{ height: 200, width: 400, paddingTop: 7, paddingLeft: 3, paddingRight: 3 }}>
+            sx={{
+              height: { xs: 150, sm: 150 },
+              width: { xs: 250, sm: 400 },
+              paddingTop: 7,
+              marginTop: 3,
+              paddingLeft: 3,
+              paddingRight: 3,
+              textAlign: 'center'
+            }}
+          >
             כדי לסמן מוצרים אהובים עליכם להתחבר לחשבון
             <br />
             <button className="btn" sx={{ marginBottom: 15 }}>

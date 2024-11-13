@@ -5,7 +5,7 @@
 }
 
 .harshama .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
-    width: 400px !important;
+    width: 30px !important;
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -26,10 +26,30 @@
     line-height: 4.5 !important;
 }
 
-.btn-shadow{
+.btn-shadow {
     box-shadow: 1px 0px 20px .5px #FFFFFF;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-padding-inline-end: 280px;
-} 
+    padding-inline-end: 280px;
+}
+
+@media (max-width: 500px) {
+    .harshama .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+        width: 300px !important;
+    }
+
+    .harshama .css-17vbkzs-MuiFormControl-root-MuiTextField-root {
+        width: 330px !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .harshama .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+        width: 250px !important;
+    }
+
+    .harshama .css-17vbkzs-MuiFormControl-root-MuiTextField-root {
+        width: 280px !important;
+    }
+}

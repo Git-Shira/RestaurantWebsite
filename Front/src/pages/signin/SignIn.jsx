@@ -19,7 +19,7 @@ import "./SignIn.css";
 
 const SignIn = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -60,7 +60,7 @@ const SignIn = () => {
       };
       try {
         const response = await axios.post(
-            `${apiUrl}/auth/login`,
+          `${apiUrl}/auth/login`,
           // "http://localhost:3000/auth/login",
           userData
         );
@@ -69,11 +69,11 @@ const SignIn = () => {
         localStorage.setItem("user", JSON.stringify(user));
         if (response.status === 200) {
           // if (user.permission === "admin") {
-            setError("");
-            setSuccess("התחברת בהצלחה");
-            setTimeout(() => {
-              navigation("/Menu");
-            }, 2000);
+          setError("");
+          setSuccess("התחברת בהצלחה");
+          setTimeout(() => {
+            navigation("/Menu");
+          }, 2000);
           // } else {
           //   setSuccess("התחברת בהצלחה");
           //   setTimeout(() => {
@@ -104,7 +104,7 @@ const SignIn = () => {
 
   return (
     <Container maxWidth="sm">
-      <div className="hithabrut" style={{ minHeight: 610 }} >
+      <div className="hithabrut" style={{ minHeight: "100vh" }} >
         <div className="title-design">
           <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
           <h1 data-aos="flip-down" data-aos-duration="1000">התחברות</h1>
@@ -151,7 +151,7 @@ const SignIn = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton onClick={togglePasswordVisibility} edge="end" sx={{ left: 55 }}>
+                    <IconButton onClick={togglePasswordVisibility} edge="end" sx={{ left: 0 }}>
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -188,13 +188,13 @@ const SignIn = () => {
         </Typography>
 
         {success && (
-          <Alert severity="success" style={{ margin: "0 auto", width: 500, justifyContent: "center", marginTop: 15 }}
+          <Alert severity="success" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginTop: 3 }}
           >
             {success}
           </Alert>
         )}
         {error && (
-          <Alert severity="error" style={{ margin: "0 auto", width: 500, justifyContent: "center", marginTop: 15 }}
+          <Alert severity="error" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center", marginTop: 3 }}
           >
             {error}
           </Alert>

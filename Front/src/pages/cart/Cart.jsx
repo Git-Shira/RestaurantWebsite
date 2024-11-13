@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
+import { DialogTitle, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import TextField from "@mui/material/TextField";
 import { Grid } from "@mui/material";
 
@@ -95,8 +97,8 @@ const Cart = () => {
   }, []);
 
   return (
-    <div className="cart" 
-    style={{ minHeight: 610 }}
+    <div className="cart"
+      style={{ minHeight: "100vh" }}
     >
       <div className="title-design">
         <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
@@ -104,12 +106,12 @@ const Cart = () => {
         <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
       </div>
 
-      <Grid container spacing={1} style={{alignItems:"center", justifyContent:"center",marginBottom:15}} >
-        <Grid item lg={4} md={7} sm={8} xs={8} style={{textAlign:"right"}} >
+      <Grid container spacing={1} style={{ alignItems: "center", justifyContent: "center", marginBottom: 15 }} >
+        <Grid item lg={4} md={7} sm={8} xs={8} style={{ textAlign: "right" }} >
           <h3 style={{ color: "white" }}>סה"כ לתשלום : &nbsp;
             <span style={{ color: "#C1121F", fontWeight: "bold" }}>{totalPrice}</span>       ₪</h3>
         </Grid>
-        <Grid item lg={2} md={2} sm={3} xs={2} style={{textAlign:"left"}}>
+        <Grid item lg={2} md={2} sm={3} xs={2} style={{ textAlign: "left" }}>
           {totalPrice > 0 && (<Link to="/Pay" className="btn"
           >
             מעבר לתשלום
@@ -117,67 +119,70 @@ const Cart = () => {
         </Grid>
       </Grid>
 
-      <Table className="table table-bordered"
-        style={{
-          maxWidth: 800,
-        }}
-      >
+      <div style={{ overflowX: 'auto' }}>
 
-        <TableHead>
-          <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
-            <TableCell align="center" style={{ width: 10 }}> תמונה</TableCell>
-            <TableCell align="center" style={{ width: 200 }}>שם מוצר</TableCell>
-            <TableCell align="center" style={{ width: 85 }}>מחיר</TableCell>
-            <TableCell align="center" style={{ width: 85 }}>כמות</TableCell>
-            <TableCell align="center" style={{ width: 50 }}>מחיקה</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {cartData.map((row, index) => (
-            <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }}
-              key={row.id}
-            >
-              <TableCell align="center" style={{ width: 11 }}>
-                <img
-                  style={{
-                    width: "9rem",
-                    height: "6rem",
-                  }}
-                  src={row.image}
-                  alt=""
-                />
-              </TableCell>
-              <TableCell align="center" style={{ width: 200 }}>{row.name}</TableCell>
-              <TableCell align="center" style={{ width: 85, padding: 1 }}>{row.price} ₪</TableCell>
-              <TableCell align="center">
+        <Table className="table table-bordered"
+          style={{
+            maxWidth: 800,
+          }}
+        >
 
-                <TextField
-                  id="outlined-basic"
-                  type="number"
-                  variant="outlined"
-                  value={row.quantity}
-                  onChange={(e) =>
-                    handleQuantityChange(row.id, e.target.value)
-                  }
-                  sx={{ width: 85, padding: 1 }}
-                />
-              </TableCell>
-              <TableCell align="center">
-
-                <Button
-                  onClick={() => {
-                    setSelectedProduct(row);
-                    handleOpenDialog();
-                  }}
-                >
-                  <i className="fa fa-trash" aria-hidden="true" style={{ color: "#C1121F", fontSize: 25 }}></i>
-                </Button>
-              </TableCell>
-
+          <TableHead>
+            <TableRow style={{ borderColor: "#C1121F" }} className="table-row">
+              <TableCell align="center" style={{ width: 10 }}> תמונה</TableCell>
+              <TableCell align="center" style={{ width: 200 }}>שם מוצר</TableCell>
+              <TableCell align="center" style={{ width: 85 }}>מחיר</TableCell>
+              <TableCell align="center" style={{ width: 85 }}>כמות</TableCell>
+              <TableCell align="center" style={{ width: 50 }}>מחיקה</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {cartData.map((row, index) => (
+              <TableRow style={{ borderColor: "#C1121F", borderRadius: 2 }}
+                key={row.id}
+              >
+                <TableCell align="center" style={{ width: 11 }}>
+                  <img
+                    style={{
+                      width: "9rem",
+                      height: "6rem",
+                    }}
+                    src={row.image}
+                    alt=""
+                  />
+                </TableCell>
+                <TableCell align="center" style={{ width: 200 }}>{row.name}</TableCell>
+                <TableCell align="center" style={{ width: 85, padding: 1 }}>{row.price} ₪</TableCell>
+                <TableCell align="center">
+
+                  <TextField
+                    id="outlined-basic"
+                    type="number"
+                    variant="outlined"
+                    value={row.quantity}
+                    onChange={(e) =>
+                      handleQuantityChange(row.id, e.target.value)
+                    }
+                    sx={{ width: 85, padding: 1 }}
+                  />
+                </TableCell>
+                <TableCell align="center">
+
+                  <Button
+                    onClick={() => {
+                      setSelectedProduct(row);
+                      handleOpenDialog();
+                    }}
+                  >
+                    <i className="fa fa-trash" aria-hidden="true" style={{ color: "#C1121F", fontSize: 25 }}></i>
+                  </Button>
+                </TableCell>
+
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
       <Dialog
         open={open}
@@ -192,6 +197,21 @@ const Cart = () => {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
+        <DialogTitle>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleCloseDialog}
+            aria-label="close"
+            sx={{
+              position: 'absolute',
+              left: 15,
+              top: 0,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <div className="dialog-delete-border">
           <DialogContent sx={{
             width: 350,

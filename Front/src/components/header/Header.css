@@ -15,7 +15,7 @@
     color: white;
 }
 
-.header .nav-link.active{
+.header .nav-link.active {
     border: 2px solid #C1121F;
     color: white;
 }
@@ -43,6 +43,51 @@ header .nav-link2:hover::after {
 }
 
 .header .MuiPaper-root,
-.header .MuiAppBar-root{
-    top:5px !important;
+.header .MuiAppBar-root {
+    top: 5px !important;
+}
+
+
+/* מעל 390px */
+@media (min-width: 391px) {
+    .links-menu {
+        display: none;
+    }
+
+    .links-appBar {
+        display: flex;
+    }
+}
+
+@media (max-width: 390px) {
+    .links-menu {
+        display: block;
+    }
+
+    .links-appBar {
+        display: none;
+    }
+}
+
+.links-menu .nav-link2 {
+    text-decoration: none;
+    color: #C1121F;
+}
+
+.links-menu .nav-link2:hover {
+    color: #C1121F;
+}
+
+.links-menu .nav-link2::after {
+    content: "";
+    width: 0%;
+    height: 3px;
+    display: block;
+    margin: 0 auto;
+    transition: 1000ms;
+}
+
+.links-menu .nav-link2:hover::after {
+    background: black;
+    width: 100%;
 }

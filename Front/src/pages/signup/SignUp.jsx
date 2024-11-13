@@ -17,7 +17,7 @@ import "./SignUp.css";
 
 const SignUp = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
-  
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -112,7 +112,7 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className="harshama" style={{ minHeight: 610 }}>
+    <div className="harshama" style={{ minHeight: "100vh" }}>
 
       <div className="title-design">
         <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
@@ -179,7 +179,7 @@ const SignUp = () => {
         />
 
         <br />
-        
+
         <TextField
           id="outlined-basic"
           label="סיסמא"
@@ -198,7 +198,7 @@ const SignUp = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={togglePasswordVisibility} edge="end" sx={{ left: 55 }}>
+                <IconButton onClick={togglePasswordVisibility} edge="end" sx={{ left: 0 }}>
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
@@ -217,13 +217,13 @@ const SignUp = () => {
         </button>
 
         {success && (
-          <Alert severity="success" style={{ margin: "0 auto", width: 500, justifyContent: "center" }}
+          <Alert severity="success" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center" }}
           >
             {success}
           </Alert>
         )}
         {error && (
-          <Alert severity="error" style={{ margin: "0 auto", width: 500, justifyContent: "center" }} >
+          <Alert severity="error" sx={{ margin: "0 auto", width: { md: 500, sm: 400, xs: 300 }, justifyContent: "center" }} >
             {error}
           </Alert>
         )}
