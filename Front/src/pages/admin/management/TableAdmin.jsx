@@ -103,7 +103,7 @@ const TableAdmin = () => {
 
       <Grid container spacing={1}
         style={{ alignItems: "center" }}>
-        <Grid item md={8.75} xs={9}  >
+        <Grid item md={5}  sm={6} xs={12}  >
           <div
             className="table-admin-search"
             style={{
@@ -148,19 +148,21 @@ const TableAdmin = () => {
               </Select>
             </FormControl>
 
-            <div className="reset">
+          </div>
+        </Grid>
+        <Grid item md={3} sm={4} xs={6}>
+          <div className="reset-search">
               {(selectedBranch &&
                 <button className="btn"
                   onClick={() => {
                     resetFilter();
                   }}
-                  style={{ marginRight: 85 }}>איפוס סינון</button>
+                  style={{ marginRight: 40}}
+                  >איפוס סינון</button>
               )}
             </div>
-
-          </div>
         </Grid>
-        <Grid item sm={2} xs={3}>
+        <Grid item md={3.5} sm={6} xs={4} sx={{marginRight:5}}>
           <div className="orders">
             <button variant="contained" className="btn" onClick={exportToExcel}
             >ייצוא ל-Excel</button>

@@ -31,13 +31,12 @@ const Branches = () => {
     }, []);
 
     return (
-        <div>
+        <div style={{ minHeight: "100vh" }}>
             <div className="title-design">
                 <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
                 <h1 data-aos="flip-down" data-aos-duration="1000">הסניפים שלנו</h1>
                 <img src={t2} alt="" className="t2" data-aos="fade-right" data-aos-duration="1000" />
             </div>
-
 
             <div className="branches">
                 <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>

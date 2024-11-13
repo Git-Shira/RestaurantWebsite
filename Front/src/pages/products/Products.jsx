@@ -421,9 +421,10 @@ const Products = () => {
                 sx={{
                   width: 550,
                   height: 480,
+                  paddingRight:2
                 }}
               >
-                <h2> {selectedProduct.name}</h2>
+                <h2 style={{marginTop:1}}> {selectedProduct.name}</h2>
                 <p className="description"> {selectedProduct.description}</p>
                 <img src={selectedProduct.image} alt="" />
                 <button className="btn" onClick={addToCart} autoFocus sx={{ display: 'flex', }}>

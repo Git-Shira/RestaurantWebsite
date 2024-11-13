@@ -28,6 +28,7 @@
 .dishes .box-container .btn,
 .product-dialog .btn,
 .reset .btn,
+.reset-search .btn,
 .not-connected-dialog .btn,
 .cart .btn,
 .forgot .btn,
@@ -53,6 +54,7 @@
 .dishes .box-container .btn:hover,
 .product-dialog .btn:hover,
 .reset .btn:hover,
+.reset-search .btn:hover,
 .not-connected-dialog .btn:hover,
 .cart .btn:hover,
 .forgot .btn:hover,
@@ -400,5 +402,26 @@
     width: 100%;
     max-width: 500px;
     margin-right: 0px !important;
+  }
+
+  .product-dialog{
+    height: 500px !important;
+  }
+  .product-dialog img {
+    height: 9rem;
+    width: 16rem;
+    margin-right: 50px;
+  }
+.product-dialog .description{
+  width: 80%;
+  height: auto;
+}
+  
+  .product-dialog .filter-values {
+    margin-right: 15px;
+  }
+
+  .product-dialog .btn {
+    margin-right: 250px;
   }
 }
