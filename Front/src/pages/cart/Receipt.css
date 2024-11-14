@@ -1,7 +1,7 @@
 .receipt {
     margin-bottom: 30px;
 }
-
+/* 
 .selector-2 {
     display: flex;
     align-items: center;
@@ -62,5 +62,52 @@
 @media (max-width:700px) {
     .selector-2 {
         left: 20%;
+    }
+} */
+
+
+.selector-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10vw;
+    height: 10vw;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    position: fixed;
+    left: 30%;
+    top:30%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    animation: glow-shadow 1s infinite alternate;
+    cursor: pointer;
+}
+
+.selector-2 .fa {
+    font-size: 1.5em;
+}
+
+@keyframes glow-shadow {
+    0% {
+        box-shadow: 0 0 10px black;
+    }
+    50% {
+        box-shadow: 0 0 15px #C1121F;
+    }
+    100% {
+        box-shadow: 0 0 20px black;
+    }
+}
+
+@media (max-width: 850px) {
+    .selector-2 {
+        left:20%;
+    }
+}
+@media (max-width: 950px) {
+    .selector-2 {
+        left:25%;
     }
 }

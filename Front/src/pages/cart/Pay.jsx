@@ -349,7 +349,7 @@ const Pay = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {!paid && (
+      {!paid && cart.totalAmount !== 0 && (
         <div>
           <div className="title-design">
             <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />
@@ -573,7 +573,6 @@ const Pay = () => {
                   תשלום
                 </Link>
               </div>
-
             </Box>
           </div >
 
