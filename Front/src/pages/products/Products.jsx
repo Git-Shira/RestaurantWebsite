@@ -201,13 +201,13 @@ const Products = () => {
       (selectCategory.length === 0)
         ? product.price >= priceRange[0] &&
         product.price <= priceRange[1] &&
-        product.name.toLowerCase().startsWith(search.toLowerCase()) &&
+        product.name.toLowerCase().includes(search.toLowerCase()) &&
         product.show === 1
         :
         selectCategory.includes(product.category) &&
         product.price >= priceRange[0] &&
         product.price <= priceRange[1] &&
-        product.name.toLowerCase().startsWith(search.toLowerCase()) &&
+        product.name.toLowerCase().includes(search.toLowerCase()) &&
         product.show === 1
   );
 
