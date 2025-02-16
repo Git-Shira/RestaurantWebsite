@@ -41,7 +41,7 @@ const Products = () => {
   const [open, setOpen] = React.useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20); // Number of items per page
+  const [itemsPerPage] = useState(24); // Number of items per page
 
   const userCookies = Cookies.get("user");
   const user = userCookies ? JSON.parse(userCookies) : null;
