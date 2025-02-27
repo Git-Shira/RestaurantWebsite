@@ -41,7 +41,7 @@ const DelayNotice = () => {
             </DialogTitle>
             <DialogContent
                 sx={{
-                    height: { xs: 150, sm: 120 },
+                    height: { xs: 180, sm: 120 },
                     width: { xs: 250, sm: 380 },
                     paddingTop: 7,
                     marginTop: 3,
@@ -53,7 +53,7 @@ const DelayNotice = () => {
                 <h5>
                     האתר שלי רץ על שרת חינמי! 🚀
                     <br />
-                    לפעמים זה לוקח דקה, אבל שווה לחכות 😉
+                    לפעמים זה לוקח דקה עד שהתפריט עולה, אבל שווה לחכות 😉
                 </h5>
 
             </DialogContent>
