@@ -21,6 +21,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../../redux/favoritesSlice";
 import { addItem } from "../../redux/cartSlice";
 
+import DelayNotice from "../../components/DelayNotice";
+
 import AOS from 'aos';
 
 import t1 from "../../IMAGES/t1.png";
@@ -224,6 +226,8 @@ const Products = () => {
 
   return (
     <div>
+      <DelayNotice/>
+
       <Container>
         <div className="title-design">
           <img src={t1} alt="" className="t1" data-aos="fade-left" data-aos-duration="1000" />

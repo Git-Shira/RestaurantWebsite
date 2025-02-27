@@ -30,6 +30,7 @@
 .reset .btn,
 .reset-search .btn,
 .not-connected-dialog .btn,
+.delay-notice-dialog .btn,
 .cart .btn,
 .forgot .btn,
 .edit-profile-user .btn,
@@ -56,6 +57,7 @@
 .reset .btn:hover,
 .reset-search .btn:hover,
 .not-connected-dialog .btn:hover,
+.delay-notice-dialog .btn:hover,
 .cart .btn:hover,
 .forgot .btn:hover,
 .edit-profile-user .btn:hover,
@@ -404,19 +406,21 @@
     margin-right: 0px !important;
   }
 
-  .product-dialog{
+  .product-dialog {
     height: 500px !important;
   }
+
   .product-dialog img {
     height: 9rem;
     width: 16rem;
     margin-right: 50px;
   }
-.product-dialog .description{
-  width: 80%;
-  height: auto;
-}
-  
+
+  .product-dialog .description {
+    width: 80%;
+    height: auto;
+  }
+
   .product-dialog .filter-values {
     margin-right: 15px;
   }
