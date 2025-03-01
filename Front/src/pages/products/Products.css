@@ -256,10 +256,16 @@
   color: white !important;
 }
 
+.MuiPagination-ul {
+  direction: ltr;
+}
+
 .pagination {
-  margin-right: 785px !important;
+  max-width: 400px;
+  justify-content: center;
   margin-top: 50px;
   margin-bottom: 50px;
+  margin-right: auto;
   padding: 10px;
   box-shadow: 1px 0px 20px 5px #FFFFFF;
   border-radius: 50px;
@@ -269,12 +275,6 @@
   .dishes .box-container {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .pagination {
-    margin-right: auto !important;
-    justify-content: center;
-    width: 380px;
-  }
 }
 
 @media (max-width:970px) {
@@ -282,22 +282,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .pagination {
-    margin-right: auto !important;
-    justify-content: center;
-    width: 380px;
+  .pagination{
+    margin: 50px auto;
   }
 }
 
 @media (max-width:640px) {
   .dishes .box-container {
     grid-template-columns: repeat(1, 1fr);
-  }
-
-  .pagination {
-    margin-right: auto !important;
-    justify-content: center;
-    width: 380px;
   }
 }
 
@@ -378,13 +370,6 @@
 }
 
 @media (max-width:420px) {
-  .pagination {
-    margin-right: auto !important;
-    margin-left: auto !important;
-    justify-content: center;
-    max-width: 300px;
-  }
-
   .search-dishes {
     margin-right: -30px !important;
   }
