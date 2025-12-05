@@ -94,6 +94,7 @@ const Cart = () => {
   };
   useEffect(() => {
     AOS.init();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
